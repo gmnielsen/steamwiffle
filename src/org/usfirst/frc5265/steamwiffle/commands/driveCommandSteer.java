@@ -1,8 +1,10 @@
 package org.usfirst.frc5265.steamwiffle.commands;
 
 import org.usfirst.frc5265.steamwiffle.Robot;
+import org.usfirst.frc5265.steamwiffle.subsystems.*;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 
 /**
  * This is the default command for the subsystem 'chassis' and allows driving properly from the joystick
@@ -32,8 +34,8 @@ public class driveCommandSteer extends Command {
     	// if we want to modify these variables, we modify them here
     	
     	// removes small motions of the joystick by discounting any value below a minimum
-    	// WE MAY WANT TO PUT THIS VARIABLE IN THE GLOBAL TABLE OF VALUES FOR EASY MODIFICATION
-    	double minMotion = 0.2;
+    	// value will be available on the dashboard
+    	double minMotion = stagValues.minimumMotionJoystick;
     	// expands remaining range of motion so that motors start at a value of 0 
     	// and not at the minimum of the joystick
     	double expMotion = 1 / (1 - minMotion);
