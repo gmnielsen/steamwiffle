@@ -99,7 +99,10 @@ public class OI {
     	return steering.getDirectionRadians();
     }
     public double getPolarMagnitude() {
-    	return steering.getMagnitude();
+    	return steering.getMagnitude();	
+    }
+    public double getThrottle() {
+    	return steering.getThrottle();
     }
     
     

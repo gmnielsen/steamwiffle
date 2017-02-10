@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class driveCommandSteer extends Command {
 
 	// variables for the raw data from the joystick
-	public double x, y, t;
+	public double x, y, t, throttle;
 	
     public driveCommandSteer() {
         // Use requires() here to declare subsystem dependencies
@@ -30,6 +30,7 @@ public class driveCommandSteer extends Command {
     	x = Robot.oi.getXSteer();
     	y = Robot.oi.getYSteer();
     	t = Robot.oi.getTwistSteer();
+    	throttle = Robot.oi.getThrottle();
     	
     	// if we want to modify these variables, we modify them here
     	
@@ -40,6 +41,9 @@ public class driveCommandSteer extends Command {
     	// and not at the minimum of the joystick
     	double expMotion = 1 / (1 - minMotion);
     	
+    	// Incorporating throttle 
+    	throttle = (throttle + 1)/2;
+    	
     	// x modification
     	if (Math.abs(x) <= minMotion) { // x can be both positive and negative
     		x = 0;
@@ -47,6 +51,7 @@ public class driveCommandSteer extends Command {
     	else {
     		// x = expMotion * (x - minMotion*Math.abs(x)/x); // abs(x)/x changes the sign of minMotion
     		x = Math.pow(x, 2) * Math.abs(x)/x; // sqr of value gets better control at low speed
+    		x = x * throttle;
     	}
     	
     	// y modification
@@ -56,6 +61,7 @@ public class driveCommandSteer extends Command {
     	else {
     		// y = expMotion * (y - minMotion*Math.abs(y)/y); // abs(y)/y changes the sign of minMotion
     		y = Math.pow(y, 2) * Math.abs(y)/y; // sqr of value gets better control at low speed
+    		y = y* throttle;
     	}
     	
     	// t modification
@@ -65,6 +71,7 @@ public class driveCommandSteer extends Command {
     	else {
     		// t = expMotion * (t - minMotion*Math.abs(t)/t); // abs(t)/t changes the sign of minMotion
     		t = Math.pow(t, 2) * Math.abs(t)/t; // sqr of value gets better control at low speed
+    		t = t * throttle;
     	}
     	    	
     	// steer using those variables
