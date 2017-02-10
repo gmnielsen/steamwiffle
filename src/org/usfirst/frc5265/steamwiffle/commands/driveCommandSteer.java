@@ -45,7 +45,8 @@ public class driveCommandSteer extends Command {
     		x = 0;
     	}
     	else {
-    		x = expMotion * (x - minMotion*Math.abs(x)/x); // abs(x)/x changes the sign of minMotion
+    		// x = expMotion * (x - minMotion*Math.abs(x)/x); // abs(x)/x changes the sign of minMotion
+    		x = Math.pow(x, 2) * Math.abs(x)/x; // sqr of value gets better control at low speed
     	}
     	
     	// y modification
@@ -53,7 +54,8 @@ public class driveCommandSteer extends Command {
     		y = 0;
     	}
     	else {
-    		y = expMotion * (y - minMotion*Math.abs(y)/y); // abs(y)/y changes the sign of minMotion
+    		// y = expMotion * (y - minMotion*Math.abs(y)/y); // abs(y)/y changes the sign of minMotion
+    		y = Math.pow(y, 2) * Math.abs(y)/y; // sqr of value gets better control at low speed
     	}
     	
     	// t modification
@@ -61,7 +63,8 @@ public class driveCommandSteer extends Command {
     		t = 0;
     	}
     	else {
-    		t = expMotion * (t - minMotion*Math.abs(t)/t); // abs(t)/t changes the sign of minMotion
+    		// t = expMotion * (t - minMotion*Math.abs(t)/t); // abs(t)/t changes the sign of minMotion
+    		t = Math.pow(t, 2) * Math.abs(t)/t; // sqr of value gets better control at low speed
     	}
     	    	
     	// steer using those variables
