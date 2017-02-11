@@ -42,7 +42,7 @@ public class driveCommandSteer extends Command {
     	double expMotion = 1 / (1 - minMotion);
     	
     	// Incorporating throttle 
-    	throttle = (throttle + 1)/2;
+    	throttle = (-throttle + 1)/2;
     	
     	// x modification
     	if (Math.abs(x) <= minMotion) { // x can be both positive and negative
