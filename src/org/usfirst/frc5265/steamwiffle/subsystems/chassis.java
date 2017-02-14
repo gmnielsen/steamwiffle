@@ -70,16 +70,22 @@ public class chassis extends Subsystem {
     // main driving program, using simple addition to get the robot moving in the appropriate direction
    
     public void driveChassisSteering(double x_speed, double y_speed, double twist) {
-    	if (angleOrient != 0) {
+    	/*if (angleOrient != 0) {
     		double [] xy_speed = rotateAngle (x_speed, y_speed, angleOrient);
     		 x_speed = xy_speed [0];
     		 y_speed = xy_speed [1];
     	}
-    	
+    	*/
+//   	x_speed = x_speed;
+//  	twist = twist;
+//	twist = 0;
+//   	y_speed = y_speed;
     	driveFrontLeft(-y_speed + x_speed + twist);
     	driveFrontRight(y_speed + x_speed + twist);
     	driveRearLeft(-y_speed - x_speed + twist);
     	driveRearRight(y_speed - x_speed + twist);
+    	
+	
     }
 
     public void initDefaultCommand() {

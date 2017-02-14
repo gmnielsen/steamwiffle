@@ -40,9 +40,21 @@ public class driveCommandSteer extends Command {
     	// expands remaining range of motion so that motors start at a value of 0 
     	// and not at the minimum of the joystick
     	double expMotion = 1 / (1 - minMotion);
+    	minMotion = 0;
     	
     	// Incorporating throttle 
     	throttle = (-throttle + 1)/2;
+    	    	
+    	x = Math.pow(x, 2) * Math.abs(x)/x; // sqr of value gets better control at low speed
+		x = x * throttle;
+		y = Math.pow(y, 2) * Math.abs(y)/y; // sqr of value gets better control at low speed
+		y = y* throttle;
+		// t = expMotion * (t - minMotion*Math.abs(t)/t); // abs(t)/t changes the sign of minMotion
+		t = Math.pow(t, 2) * Math.abs(t)/t; // sqr of value gets better control at low speed
+		t = t * throttle;
+		
+    	/*
+    	
     	
     	// x modification
     	if (Math.abs(x) <= minMotion) { // x can be both positive and negative
@@ -73,7 +85,11 @@ public class driveCommandSteer extends Command {
     		t = Math.pow(t, 2) * Math.abs(t)/t; // sqr of value gets better control at low speed
     		t = t * throttle;
     	}
-    	    	
+    	   	
+    	   	
+    	   	*/
+    	
+    	
     	// steer using those variables
     	Robot.chassis.driveChassisSteering(x, y, t);
     	
