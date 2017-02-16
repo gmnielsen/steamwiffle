@@ -22,6 +22,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -64,22 +65,48 @@ public class chassis extends Subsystem {
     	double sinA = Math.sin(angle * (3.14159 / 180.0));
     	double [] out = new double [2];
     	out [0] = x * cosA - y * sinA;
-    	out [1] = x * sinA - y * cosA;
+    	out [1] = x * sinA + y * cosA;
     	return out;
     }
     // main driving program, using simple addition to get the robot moving in the appropriate direction
    
     public void driveChassisSteering(double x_speed, double y_speed, double twist) {
+    	double FL, FR, RL, RR;
+    	double maxXYT;
+    	
     	if (angleOrient != 0) {
     		double [] xy_speed = rotateAngle (x_speed, y_speed, angleOrient);
     		 x_speed = xy_speed [0];
     		 y_speed = xy_speed [1];
     	}
     	
-    	driveFrontLeft(-y_speed + x_speed + twist);
-    	driveFrontRight(y_speed + x_speed + twist);
-    	driveRearLeft(-y_speed - x_speed + twist);
-    	driveRearRight(y_speed - x_speed + twist);
+    	FL = -y_speed + x_speed + twist;
+    	FR = y_speed + x_speed + twist;
+    	RL = -y_speed - x_speed + twist;
+    	RR = y_speed - x_speed + twist;
+    	
+    	// NORMALIZE max FL, FR, RR and RL to 1
+    	maxXYT = Math.max(Math.abs(FL), Math.abs(FR));
+    	maxXYT = Math.max(maxXYT, Math.abs(RL));
+    	maxXYT = Math.max(maxXYT, Math.abs(RR));
+    	if (maxXYT > 1) {
+    		FR = FR / maxXYT;
+    		FL = FL / maxXYT;
+    		RR = RR / maxXYT;
+    		RL = RL / maxXYT;
+    	}
+    		
+    	driveFrontLeft(FL);
+    	driveFrontRight(FR);
+    	driveRearLeft(RL);
+    	driveRearRight(RR);
+    	
+    	// EVALUATION TEST
+		SmartDashboard.putNumber("DB/Slider 0", FL);
+		SmartDashboard.putNumber("DB/Slider 1", FR);
+		SmartDashboard.putNumber("DB/Slider 2", RL);
+		SmartDashboard.putNumber("DB/Slider 3", RR);
+    	
     }
 
     public void initDefaultCommand() {
