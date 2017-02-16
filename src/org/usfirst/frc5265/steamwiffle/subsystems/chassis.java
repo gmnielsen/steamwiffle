@@ -72,8 +72,11 @@ public class chassis extends Subsystem {
    
     public void driveChassisSteering(double x_speed, double y_speed, double twist) {
 <<<<<<< HEAD
+<<<<<<< HEAD
     	/*if (angleOrient != 0) {
 =======
+=======
+>>>>>>> master
     	double FL, FR, RL, RR;
     	double maxXYT;
     	
@@ -83,6 +86,7 @@ public class chassis extends Subsystem {
     		 x_speed = xy_speed [0];
     		 y_speed = xy_speed [1];
     	}
+<<<<<<< HEAD
 <<<<<<< HEAD
     	*/
 //   	x_speed = x_speed;
@@ -96,6 +100,8 @@ public class chassis extends Subsystem {
     	
 	
 =======
+=======
+>>>>>>> master
     	
     	FL = -y_speed + x_speed + twist;
     	FR = y_speed + x_speed + twist;
@@ -124,6 +130,9 @@ public class chassis extends Subsystem {
 		SmartDashboard.putNumber("DB/Slider 2", RL);
 		SmartDashboard.putNumber("DB/Slider 3", RR);
     	
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
     }
 
