@@ -72,8 +72,6 @@ public class chassis extends Subsystem {
    
     public void driveChassisSteering(double x_speed, double y_speed, double twist) {
 
-    	/*if (angleOrient != 0) {
-
     	double FL, FR, RL, RR;
     	double maxXYT;
     	
@@ -84,7 +82,6 @@ public class chassis extends Subsystem {
     		 y_speed = xy_speed [1];
     	}
 
-    	*/
 //   	x_speed = x_speed;
 //  	twist = twist;
 //	twist = 0;
