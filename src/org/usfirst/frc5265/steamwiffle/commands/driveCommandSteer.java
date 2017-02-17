@@ -39,8 +39,7 @@ public class driveCommandSteer extends Command {
     	
     	// if we want to modify these variables, we modify them here
     	
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     	// removes small motions of the joystick by discounting any value below a minimum
     	// value will be available on the dashboard
     	double minMotion = stagValues.minimumMotionJoystick;
@@ -49,10 +48,7 @@ public class driveCommandSteer extends Command {
     	double expMotion = 1 / (1 - minMotion);
     	minMotion = 0;
     	
-=======
->>>>>>> master
-=======
->>>>>>> master
+
     	// Incorporating throttle 
     	throttle = (-throttle + 1)/2;
     	    	
@@ -174,20 +170,16 @@ public class driveCommandSteer extends Command {
     		t = Math.pow(t, 2) * Math.abs(t)/t; // sqr of value gets better control at low speed
     		t = t * throttle;
     	}
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     	   	
     	   	
     	   	*/
     	
     	
-=======
-=======
->>>>>>> master
+
     	*/
     	
-    	    	
->>>>>>> master
+
     	// steer using those variables
     	Robot.chassis.driveChassisSteering(x, y, t);
     	
