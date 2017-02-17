@@ -64,7 +64,7 @@ public class chassis extends Subsystem {
     	double sinA = Math.sin(angle * (3.14159 / 180.0));
     	double [] out = new double [2];
     	out [0] = x * cosA - y * sinA;
-    	out [1] = x * sinA - y * cosA;
+    	out [1] = x * sinA + y * cosA;
     	return out;
     }
     // main driving program, using simple addition to get the robot moving in the appropriate direction
