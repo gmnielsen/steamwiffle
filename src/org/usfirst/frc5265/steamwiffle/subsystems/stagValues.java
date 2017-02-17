@@ -14,7 +14,7 @@ public class stagValues extends Subsystem {
 	
 	// DRIVING
 	public static final double minimumMotionJoystick = 0.3;
-<<<<<<< HEAD
+
 	
 // camera stuff
 	public int camSession;
@@ -23,9 +23,6 @@ public class stagValues extends Subsystem {
 	public String camFront = "cam0";
 	public String camBack = "cam1";
 	public String camAlt = "cam2";
-	
-=======
->>>>>>> master
 	
     public void initDefaultCommand() {
         // This is where we put the above values to the SmartDashboard
