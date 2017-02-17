@@ -71,23 +71,19 @@ public class chassis extends Subsystem {
     // main driving program, using simple addition to get the robot moving in the appropriate direction
    
     public void driveChassisSteering(double x_speed, double y_speed, double twist) {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     	/*if (angleOrient != 0) {
-=======
-=======
->>>>>>> master
+
     	double FL, FR, RL, RR;
     	double maxXYT;
     	
     	if (angleOrient != 0) {
->>>>>>> master
+
     		double [] xy_speed = rotateAngle (x_speed, y_speed, angleOrient);
     		 x_speed = xy_speed [0];
     		 y_speed = xy_speed [1];
     	}
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     	*/
 //   	x_speed = x_speed;
 //  	twist = twist;
@@ -98,11 +94,7 @@ public class chassis extends Subsystem {
     	driveRearLeft(-y_speed - x_speed + twist);
     	driveRearRight(y_speed - x_speed + twist);
     	
-	
-=======
-=======
->>>>>>> master
-    	
+
     	FL = -y_speed + x_speed + twist;
     	FR = y_speed + x_speed + twist;
     	RL = -y_speed - x_speed + twist;
@@ -130,10 +122,7 @@ public class chassis extends Subsystem {
 		SmartDashboard.putNumber("DB/Slider 2", RL);
 		SmartDashboard.putNumber("DB/Slider 3", RR);
     	
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> master
+
     }
 
     public void initDefaultCommand() {
