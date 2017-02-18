@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.vision.VisionThread;
 public class camera extends Subsystem {
 	public void cameraInit() {
 	    
-	    RobotMap.init();
+	    //RobotMap.init();
 	    new Thread(() -> {
 	        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 	        camera.setResolution(640, 480);
@@ -53,5 +53,6 @@ public class camera extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	cameraInit();
     }
 }
