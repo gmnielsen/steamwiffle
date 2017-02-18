@@ -50,6 +50,8 @@ public class RobotMap {
     public static SpeedController fuelspinnies;
     public static DigitalInput fuelLimitSwitch1;
     public static Ultrasonic gearUltrasonic1;
+    
+    
     //public static Solenoid gearSolenoid1;
     //public static Compressor airCompressor1;
     //public static Solenoid airSolenoid1;
