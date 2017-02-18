@@ -13,7 +13,7 @@ public class stagValues extends Subsystem {
 	// and then be put on the dashboard
 	
 	// DRIVING
-	public static final double minimumMotionJoystick = 0.3;
+	public static final double minimumMotionJoystick = 0.2;
 	
 
     public void initDefaultCommand() {
