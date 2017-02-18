@@ -34,7 +34,7 @@ public class driveCommandSteer extends Command {
     	y = Robot.oi.getYSteer();
     	t = Robot.oi.getTwistSteer();
     	throttle = Robot.oi.getThrottle();
-    //	minMotion = SmartDashboard.getNumber("minimumMotionJoystick", 0.0);
+    	//	minMotion = SmartDashboard.getNumber("minimumMotionJoystick", 0.0);
     	minMotion = stagValues.minimumMotionJoystick;
     	double pwr = 2.0;
     	
