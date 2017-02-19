@@ -69,7 +69,7 @@ public class chassis extends Subsystem {
     	return out;
     }
     // main driving program, using simple addition to get the robot moving in the appropriate direction
-   
+    
     public void driveChassisSteering(double x_speed, double y_speed, double twist) {
     	double FL, FR, RL, RR;
     	double maxXYT;
