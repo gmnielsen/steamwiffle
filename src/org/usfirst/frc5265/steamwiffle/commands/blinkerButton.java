@@ -25,8 +25,27 @@ public class blinkerButton extends Command {
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
-    	Robot.lights.blinkerToggle();
+    @SuppressWarnings("deprecation")
+	protected void initialize() {
+    	SmartDashboard.getBoolean("blinkerState");
+    	// test sd for tru
+    	// if true, start loop, and abort false
+    	// if false, don't call loop, abort is true
+    	
+    	if (blinkerState){
+    		Robot.lights.blinkAbort = false;
+    		Robot.lights.BLINK();
+    		SmartDashboard.putBoolean("blinkerState", false);
+    	}
+    		else{ 
+    			Robot.lights.blinkAbort = true;
+    			SmartDashboard.putBoolean("blinkerState", true);
+    		}
+    		
+    	
+    	//Robot.lights.blinkerToggle();
+    	//Robot.lights.blinkAbort = true;
+    	
     	 //new Lights();
     	
     	
@@ -45,8 +64,11 @@ public class blinkerButton extends Command {
 */
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	      	
+    	
+    	
     	// Robot.lights.BLINK();
-    	blinkerState1 = SmartDashboard.getBoolean("blinkerState");
+    /*	blinkerState1 = SmartDashboard.getBoolean("blinkerState");
     	 
     	SmartDashboard.putBoolean("blinkerstate2", blinkerState1);
     	while (blinkerState1 == true) {
@@ -66,7 +88,7 @@ public class blinkerButton extends Command {
     	Robot.lights.blinker.set(0);
     	end();
     //	Robot.lights.blinkerToggle();
-    	
+    	*/
     	
     }
 

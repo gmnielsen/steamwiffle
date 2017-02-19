@@ -17,26 +17,32 @@ public class lights extends Subsystem {
     // here. Call these from Commands.
 	public final SpeedController blinker = RobotMap.blinker;
 	boolean blinkerState, blinkerState1;
-    
-	public void BLINK() {
-		blinkerState1 = SmartDashboard.getBoolean("blinkerState");
+    public boolean blinkAbort = false;
 	
-	SmartDashboard.putBoolean("blinkerstate1", blinkerState1);
-	while (blinkerState1) {
-  	  Robot.lights.blinker.set(.5);
-        Timer.delay(3);
-        Robot.lights.blinker.set(0);
-        Timer.delay(3);    	
+	public void BLINK() {
+	SmartDashboard.getBoolean("blinkerState"); 
+	while (blinkerState) {
+  	  if (blinkAbort) {
+  		  break;
+  	  }
+  		  Robot.lights.blinker.set(.5);
+  		  
+  		  Timer.delay(1);
+  		  
+          Robot.lights.blinker.set(0);
+           
+          Timer.delay(1);    	
         //blinkerState = SmartDashboard.getBoolean("blinkerState");
       //  SmartDashboard.putString("DB/String 0",String.valueOf(Robot.lights.blinker.get())); 
-        blinkerState = SmartDashboard.getBoolean("blinkerState");
-        blinkerState1 = blinkerState;
+      blinkerState = SmartDashboard.getBoolean("blinkerState");
+       // blinkerState1 = blinkerState;
         //blinkerState1 = !blinkerState1;
-        SmartDashboard.putBoolean("brushState1 after loop", blinkerState1);
+       // SmartDashboard.putBoolean("brushState1 after loop", blinkerState1);
         SmartDashboard.putBoolean("brushState after loop", blinkerState);
         
 	}
 	Robot.lights.blinker.set(0);
+	Robot.lights.blinkAbort = true;
 	}
 	
 /*
@@ -108,13 +114,13 @@ public class Lights extends Command {
         //setDefaultCommand(new MySpecialCommand());
     	
     }
-    public boolean blinkerToggle(){
+   /* public boolean blinkerToggle(){
         @SuppressWarnings("deprecation")
 		boolean blinkerState = SmartDashboard.getBoolean("blinkerState");
      	blinkerState = !blinkerState;
      	SmartDashboard.putBoolean("blinkerState", blinkerState);
       	return blinkerState;
-      	
+     */ 	
       
 
      	//return blinkerState;
@@ -127,8 +133,9 @@ public class Lights extends Command {
             SmartDashboard.putString("DB/String 0",String.valueOf(blinker.get())); 
       	}
       	blinker.set(0);
-      	*/
+      	
     }
+    */
     public void callLights (){
     	new Lights(); 
     }
