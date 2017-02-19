@@ -7,10 +7,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutonomousCommand2 extends Command {
+public class DriveByTime extends Command {
 	public double xx,yy,tt;
 	
-    public AutonomousCommand2(double xx, double yy, double tt, double time) {
+    public DriveByTime(double xx, double yy, double tt, double time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassis);
