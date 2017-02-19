@@ -50,6 +50,8 @@ public class RobotMap {
     public static SpeedController fuelspinnies;
     public static DigitalInput fuelLimitSwitch1;
     public static Ultrasonic gearUltrasonic1;
+    public static SpeedController blinker;
+
     //public static Solenoid gearSolenoid1;
     //public static Compressor airCompressor1;
     //public static Solenoid airSolenoid1;
@@ -105,6 +107,9 @@ public class RobotMap {
         
         gearUltrasonic1 = new Ultrasonic(0, 1);
         LiveWindow.addSensor("gear", "Ultrasonic 1", gearUltrasonic1);
+        
+        blinker = new Victor(6);
+        LiveWindow.addActuator("camera", "Light 1", (Victor) blinker);
         
         //airCompressor1 = new Compressor(0);
         
