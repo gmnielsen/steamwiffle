@@ -14,6 +14,7 @@ public class stagValues extends Subsystem {
 	
 	// DRIVING
 	public static final double minimumMotionJoystick = 0.3; // zero for calibration
+	public static boolean blinkerState;
 	
 
     public void initDefaultCommand() {
@@ -21,6 +22,7 @@ public class stagValues extends Subsystem {
     	// using SmartDashboard.put ...
     	
     	SmartDashboard.putNumber("minJoystickMotion", minimumMotionJoystick);
+    	SmartDashboard.putBoolean("blinkerState", true);
 
     }
 }

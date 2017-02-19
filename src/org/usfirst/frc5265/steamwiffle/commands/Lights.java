@@ -26,6 +26,7 @@ public class Lights extends Command {
     // Called just before this Command runs the first time
     @SuppressWarnings("deprecation")
 	protected void initialize() {
+    	SmartDashboard.putString("Lights", "works");
     	//Timer.delay(1);
     	blinkerState1 = SmartDashboard.getBoolean("blinkerState");
     	//SmartDashboard.putBoolean("blinkerState1", blinkerState1);

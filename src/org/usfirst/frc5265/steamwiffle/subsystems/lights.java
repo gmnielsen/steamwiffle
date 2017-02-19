@@ -1,5 +1,6 @@
 package org.usfirst.frc5265.steamwiffle.subsystems;
 
+import edu.wpi.first.wpilibj.Notifier;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -7,6 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc5265.steamwiffle.*;
 import org.usfirst.frc5265.steamwiffle.commands.Lights;
+import org.usfirst.frc5265.steamwiffle.commands.toggleTest;
 
 /**
  *
@@ -18,29 +20,26 @@ public class lights extends Subsystem {
 	public final SpeedController blinker = RobotMap.blinker;
 	boolean blinkerState, blinkerState1;
     public boolean blinkAbort = false;
+    public boolean itcalled = false;
+   
 	
 	public void BLINK() {
-	SmartDashboard.getBoolean("blinkerState"); 
-	while (blinkerState) {
-  	  if (blinkAbort) {
-  		  break;
-  	  }
-  		  Robot.lights.blinker.set(.5);
-  		  
+		  stop();
+	SmartDashboard.getBoolean("blinkerState");  
+	while (!blinkAbort) {
+		SmartDashboard.putString("blinK", "blink");
+  	  //if (blinkAbort) { 		  break;  	  }
+  		  Robot.lights.blinker.set(.5);  
   		  Timer.delay(1);
-  		  
-          Robot.lights.blinker.set(0);
-           
+          Robot.lights.blinker.set(.0);
           Timer.delay(1);    	
-        //blinkerState = SmartDashboard.getBoolean("blinkerState");
-      //  SmartDashboard.putString("DB/String 0",String.valueOf(Robot.lights.blinker.get())); 
+       
       blinkerState = SmartDashboard.getBoolean("blinkerState");
-       // blinkerState1 = blinkerState;
-        //blinkerState1 = !blinkerState1;
-       // SmartDashboard.putBoolean("brushState1 after loop", blinkerState1);
-        SmartDashboard.putBoolean("brushState after loop", blinkerState);
+        SmartDashboard.putBoolean("brushState after loop", blinkAbort);
+        stop();
         
 	}
+	SmartDashboard.putString("lights", "after return");
 	Robot.lights.blinker.set(0);
 	Robot.lights.blinkAbort = true;
 	}
@@ -136,7 +135,9 @@ public class Lights extends Command {
       	
     }
     */
-    public void callLights (){
-    	new Lights(); 
+    public static void stop (){
+    	new Lights();
+    	
+    	
     }
 }

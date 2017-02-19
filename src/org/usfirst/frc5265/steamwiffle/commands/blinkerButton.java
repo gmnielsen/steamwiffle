@@ -16,7 +16,7 @@ import org.usfirst.frc5265.steamwiffle.commands.Lights;
  *
  */
 public class blinkerButton extends Command {
-	public static boolean blinkerState;
+	public static boolean blinkerState = true;
 	public static boolean blinkerState1;
 	public blinkerButton() {
         // Use requires() here to declare subsystem dependencies
@@ -27,22 +27,28 @@ public class blinkerButton extends Command {
     // Called just before this Command runs the first time
     @SuppressWarnings("deprecation")
 	protected void initialize() {
-    	SmartDashboard.getBoolean("blinkerState");
+     	SmartDashboard.putString("blink Button", "begin init");
+    	blinkerState = SmartDashboard.getBoolean("blinkerState");
     	// test sd for tru
     	// if true, start loop, and abort false
     	// if false, don't call loop, abort is true
     	
     	if (blinkerState){
     		Robot.lights.blinkAbort = false;
+    		SmartDashboard.putString("blink Button", "if true");
     		Robot.lights.BLINK();
     		SmartDashboard.putBoolean("blinkerState", false);
+    		
+    		end();
     	}
     		else{ 
     			Robot.lights.blinkAbort = true;
     			SmartDashboard.putBoolean("blinkerState", true);
+    			SmartDashboard.putString("blink Button", "if false");
+    			end();
     		}
     		
-    	
+    	SmartDashboard.putString("blink Button", "initialize");
     	//Robot.lights.blinkerToggle();
     	//Robot.lights.blinkAbort = true;
     	
@@ -64,7 +70,7 @@ public class blinkerButton extends Command {
 */
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	      	
+    	SmartDashboard.putString("blink Button", "execute"); 
     	
     	
     	// Robot.lights.BLINK();
@@ -94,11 +100,13 @@ public class blinkerButton extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+     	SmartDashboard.putString("blink Button", "is fin");
         return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+     	SmartDashboard.putString("blink Button", "end");
     }
 
     // Called when another command which requires one or more of the same
