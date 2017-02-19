@@ -55,6 +55,8 @@ public class camera extends Subsystem {
 	        mjpegServer2.setSource(outputStream0);
 	        
 	        
+	        
+	        
 	        /*
 	        Mat source = new Mat();
 	        Mat output = new Mat();
