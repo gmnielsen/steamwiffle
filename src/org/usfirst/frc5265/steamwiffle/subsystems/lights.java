@@ -1,0 +1,135 @@
+package org.usfirst.frc5265.steamwiffle.subsystems;
+
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc5265.steamwiffle.*;
+import org.usfirst.frc5265.steamwiffle.commands.Lights;
+
+/**
+ *
+ */
+public class lights extends Subsystem {
+
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
+	public final SpeedController blinker = RobotMap.blinker;
+	boolean blinkerState, blinkerState1;
+    
+	public void BLINK() {
+		blinkerState1 = SmartDashboard.getBoolean("blinkerState");
+	
+	SmartDashboard.putBoolean("blinkerstate1", blinkerState1);
+	while (blinkerState1) {
+  	  Robot.lights.blinker.set(.5);
+        Timer.delay(3);
+        Robot.lights.blinker.set(0);
+        Timer.delay(3);    	
+        //blinkerState = SmartDashboard.getBoolean("blinkerState");
+      //  SmartDashboard.putString("DB/String 0",String.valueOf(Robot.lights.blinker.get())); 
+        blinkerState = SmartDashboard.getBoolean("blinkerState");
+        blinkerState1 = blinkerState;
+        //blinkerState1 = !blinkerState1;
+        SmartDashboard.putBoolean("brushState1 after loop", blinkerState1);
+        SmartDashboard.putBoolean("brushState after loop", blinkerState);
+        
+	}
+	Robot.lights.blinker.set(0);
+	}
+	
+/*
+ *
+public class Lights extends Command {
+	public Lights() {
+    	requires(Robot.camera);
+    	
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	
+    }
+
+    // Called just before this Command runs the first time
+    protected void initialize() {
+    	blinkerState = SmartDashboard.getBoolean("blinkerState", true);
+    	blinkerToggle();
+    	while (blinkerState) {
+    	  blinker.set(.5);
+          Timer.delay(3);
+          blinker.set(0);
+          Timer.delay(3);    	
+          SmartDashboard.putString("DB/String 0",String.valueOf(blinker.get())); 
+    	}
+    	blinker.set(0);
+    	
+    	// test brushstate and either turn the brush motor on or off
+    	
+    	}
+    
+    	
+    public static boolean blinkerToggle() {
+       		boolean blinkerState = SmartDashboard.getBoolean("blinkerState",true);
+           	blinkerState = !blinkerState;
+           	SmartDashboard.putBoolean("blinkerState",blinkerState);	
+           	return blinkerState;
+    
+
+          
+    		
+    		
+    }
+  
+ 
+
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
+    }
+
+    // Make this return true when this Command no longer needs to run execute()
+    protected boolean isFinished() {
+        return false;
+    }
+
+    // Called once after isFinished returns true
+    protected void end() {
+    }
+
+    // Called when another command which requires one or more of the same
+    // subsystems is scheduled to run
+    protected void interrupted() {
+    }
+}
+
+*/
+
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        //setDefaultCommand(new MySpecialCommand());
+    	
+    }
+    public boolean blinkerToggle(){
+        @SuppressWarnings("deprecation")
+		boolean blinkerState = SmartDashboard.getBoolean("blinkerState");
+     	blinkerState = !blinkerState;
+     	SmartDashboard.putBoolean("blinkerState", blinkerState);
+      	return blinkerState;
+      	
+      
+
+     	//return blinkerState;
+    
+     /* (blinkerState) {
+      	  blinker.set(.5);
+            Timer.delay(3);
+            blinker.set(0);
+            Timer.delay(3);    	
+            SmartDashboard.putString("DB/String 0",String.valueOf(blinker.get())); 
+      	}
+      	blinker.set(0);
+      	*/
+    }
+    public void callLights (){
+    	new Lights(); 
+    }
+}

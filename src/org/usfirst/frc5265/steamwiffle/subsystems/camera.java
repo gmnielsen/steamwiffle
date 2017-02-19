@@ -1,22 +1,36 @@
+
 package org.usfirst.frc5265.steamwiffle.subsystems;
+
+import java.util.concurrent.TimeUnit;
 
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc5265.steamwiffle.RobotMap;
+
 
 import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.VisionThread;
+
 
 /**
  *
  */
 public class camera extends Subsystem {
+	
+	private static final SpeedController blinker = RobotMap.blinker;
+	
 	public void cameraInit() {
+		
+		
+
 	    
 	    //RobotMap.init();
 	    new Thread(() -> {
@@ -55,4 +69,11 @@ public class camera extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     	cameraInit();
     }
+  
+
+    	
+  
+    	
+    	
+    
 }
