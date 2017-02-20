@@ -17,23 +17,37 @@ import org.usfirst.frc5265.steamwiffle.Robot;
  *
  */
 public class AutonomousCommand extends Command {
+	private double x_speed = 1;
+	private double y_speed = 0;
+	private double twist = 0;
+	private double time = 3;
 
    
     public AutonomousCommand() {
     	requires(Robot.chassis);
+<<<<<<< HEAD
     	// hard code timeout for testing
     	setTimeout(3);
+=======
+    	setTimeout(time);
+    	
+>>>>>>> cb217
 
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+<<<<<<< HEAD
     	// hard code motion for testing
     	Robot.chassis.driveChassisSteering(0, 1, 0);
+=======
+    	Robot.chassis.driveChassisSteering(x_speed, y_speed, twist);
+>>>>>>> cb217
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	//Robot.chassis.driveChassisSteering(x_speed, y_speed, twist);
     }
 
     // Make this return true when this Command no longer needs to run execute()
