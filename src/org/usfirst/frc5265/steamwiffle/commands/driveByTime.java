@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class driveByTime extends Command {
-	public double x, y, t, time;
+	public double xx, yy, tt, time;
 	
 
     public driveByTime(double x, double y, double t, double time) {
@@ -16,16 +16,19 @@ public class driveByTime extends Command {
         // eg. requires(chassis);
     	requires(Robot.chassis);
     	setTimeout(time);
+    	xx = x;
+    	yy = y;
+    	tt = t;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.chassis.driveChassisSteering(x, y, t);
+    	Robot.chassis.driveChassisSteering(xx, yy, tt);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.chassis.driveChassisSteering(x, y, t);
+    	//Robot.chassis.driveChassisSteering(x, y, t);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -35,10 +38,12 @@ public class driveByTime extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.chassis.driveChassisSteering(0, 0, 0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
