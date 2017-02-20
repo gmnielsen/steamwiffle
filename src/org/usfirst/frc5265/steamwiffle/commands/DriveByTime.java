@@ -3,6 +3,7 @@ package org.usfirst.frc5265.steamwiffle.commands;
 import org.usfirst.frc5265.steamwiffle.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -10,11 +11,18 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveByTime extends Command {
 	public double xx,yy,tt;
 	
-    public DriveByTime(double xx, double yy, double tt, double time) {
+    public DriveByTime(double x, double y, double t, double time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassis);
     	setTimeout(time);
+    	xx = x;
+    	yy = y;
+    	tt = t;
+    	SmartDashboard.putNumber("x", xx);
+    	SmartDashboard.putNumber("y", yy);
+    	SmartDashboard.putNumber("t", tt);
+    	
 
     }
 

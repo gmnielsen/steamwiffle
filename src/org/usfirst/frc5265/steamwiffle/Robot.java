@@ -69,11 +69,12 @@ public class Robot extends IterativeRobot {
 
         //autonomousCommand = new AutonomousCommand();
         autoChooser = new SendableChooser<Command>();
-        autoChooser.addDefault("Default Program", new AutonomousCommand());
-        autoChooser.addObject("Auto 45R", new DriveByTime(0.5, 0.5, 0, 0.5));
-        autoChooser.addObject("Auto 45L",  new DriveByTime(-0.5, 0.5, 0, 0.5));
-        autoChooser.addObject("spin ccw",  new DriveByTime(0, 0, -0.8, 0.5));
-        autoChooser.addObject("spin cw",  new DriveByTime(0, 0, 0.8, 0.5));
+        autoChooser.addObject("Auto 45R", new DriveByTime(0.5, 0.5, 0.0, 5.0));
+        autoChooser.addObject("Auto 45L",  new DriveByTime(-0.5, 0.5, 0.0, 5.0));
+        autoChooser.addDefault("spin ccw",  new DriveByTime(0.0, 0.0, -0.8, 5.0));
+        autoChooser.addObject("spin cw",  new DriveByTime(0.0, 0.0, 0.8, 5.0));
+        autoChooser.addObject("Default Program", new AutonomousCommand());
+        
 
         
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
