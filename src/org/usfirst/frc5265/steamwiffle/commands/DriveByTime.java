@@ -9,25 +9,24 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class DriveByTime extends Command {
+	// these variables are used throughout this command
 	public double xx,yy,tt;
 	
     public DriveByTime(double x, double y, double t, double time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassis);
+    	// x, y, t, and time are only local to this method
     	setTimeout(time);
+    	// put the values for x, y and t into their public counterparts
     	xx = x;
     	yy = y;
     	tt = t;
-    	SmartDashboard.putNumber("x", xx);
-    	SmartDashboard.putNumber("y", yy);
-    	SmartDashboard.putNumber("t", tt);
-    	
-
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	// move according to the given values
     	Robot.chassis.driveChassisSteering(xx, yy, tt);
 
     
@@ -44,6 +43,7 @@ public class DriveByTime extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	// stop moving
     	Robot.chassis.driveChassisSteering(0, 0, 0);
     }
 
