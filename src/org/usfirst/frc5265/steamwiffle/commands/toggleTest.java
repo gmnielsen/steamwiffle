@@ -1,5 +1,6 @@
 package org.usfirst.frc5265.steamwiffle.commands;
 
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc5265.steamwiffle.subsystems.lights;
@@ -9,18 +10,28 @@ import org.usfirst.frc5265.steamwiffle.Robot;
  *
  */
 public class toggleTest extends Command {
-
+	
+	public boolean toggleState;
+    
     public toggleTest() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.lights);
-    }
+    	}
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.lights.blinkAbort = false;
-    	//Robot.lights.BLINK();
-    	SmartDashboard.putString("toggleTest", "init");
+    	// is this is on, then make it off, or vice versa
+    	toggleState = Robot.lights.lightToggle();
+    	// test toggleState and write true or false to the smartdashboard
+    	if (toggleState){
+    		SmartDashboard.putString("toggle", "it is true");
+    		//Robot.lights.blinkAbort = true;
+    	} else {
+    		SmartDashboard.putString("toggle", "it is false");
+    		//Robot.lights.blinkAbort = false;
+    	}
+    	//System.out.println("Toggle State " + toggleState);
     	
     	
     }
@@ -31,12 +42,11 @@ public class toggleTest extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	SmartDashboard.putString("toggleTest", "end");
     	//Robot.lights.blinkAbort = true;
     }
     	

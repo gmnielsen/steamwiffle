@@ -14,7 +14,10 @@ public class stagValues extends Subsystem {
 	
 	// DRIVING
 	public static final double minimumMotionJoystick = 0.3; // zero for calibration
+	
 	public static boolean blinkerState;
+	
+	public static boolean lightToggle = false;
 	
 
     public void initDefaultCommand() {
