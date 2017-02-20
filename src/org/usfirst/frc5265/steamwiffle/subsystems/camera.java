@@ -16,15 +16,19 @@ import edu.wpi.first.wpilibj.vision.VisionThread;
  *
  */
 public class camera extends Subsystem {
+	// camera00 will be facing in the direction of the gear and the shooting
+	// camera01 will be facing in the direction of the intake
+	UsbCamera camera00, camera01;
+	
+	// this creates camera00 in a new thread
+	// a new thread means that this works in parallel to the rest of the robot
 	public void cameraInit() {
-	    
-	    //RobotMap.init();
 	    new Thread(() -> {
-	        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-	        camera.setResolution(640, 480);
+	        camera00 = CameraServer.getInstance().startAutomaticCapture(0);
+	        camera00.setResolution(320, 240);
 	        
 	        CvSink cvSink = CameraServer.getInstance().getVideo();
-	        CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 640, 480);
+	        CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 320, 240);
 	        
 	        Mat source = new Mat();
 	        Mat output = new Mat();
