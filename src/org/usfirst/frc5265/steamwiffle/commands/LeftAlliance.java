@@ -7,17 +7,18 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class CenterAlliance extends CommandGroup {
+public class LeftAlliance extends CommandGroup {
 
-    public CenterAlliance() {
+    public LeftAlliance() {
     	requires(Robot.chassis);
+    
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(new driveByTime(-0.5 ,0.0, 0.0, 3.0));
-    	addSequential(new driveByTime(0.0, 0.5, 0.0, 3.0));
-    	addSequential(new driveByTime(0.5, 0.5, 0.0, 3.0));
+    	addSequential(new driveByTime(0.5, 0.0, 0.0, 5.0));
+    	addSequential(new driveByTime(0.0, 0.0, 1.0, 5.0));
+
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());
