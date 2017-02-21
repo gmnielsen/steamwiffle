@@ -55,6 +55,9 @@ public class OI {
     public Joystick steering;
     public JoystickButton plus90;
     public JoystickButton minus90;
+    public JoystickButton shootByTime;
+    public JoystickButton shoot;
+    public JoystickButton intake;
     
     public OI() {
         
@@ -62,12 +65,18 @@ public class OI {
     	steering = new Joystick(0);
         
         // construct each button and what happens when it is used
-        click01 = new JoystickButton(steering, 1);
-        	click01.whileHeld(new dothis01());
+        //click01 = new JoystickButton(steering, 1);
+        	//click01.whileHeld(new dothis01());
         plus90 = new JoystickButton(steering, 8);
         	plus90.whenPressed(new buttonplus90());
         minus90 = new JoystickButton(steering, 7);
         	minus90.whenPressed(new buttonminus90());
+        shootByTime = new JoystickButton(steering, 2);
+        	shootByTime.whenPressed(new ShootByTime(0.8, 5.0));
+        shoot = new JoystickButton(steering, 1);
+        	shoot.whileHeld(new shooter(0.8));
+        intake = new JoystickButton(steering, 3);
+        	intake.whileHeld(new IntakeCommand(0.7));
         
         // SmartDashboard Buttons, if we need them, go here
         //SmartDashboard.putData("Autonomous Command", new AutonomousCommand());

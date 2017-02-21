@@ -43,6 +43,7 @@ public class RobotMap {
     public static SpeedController chassisSpeedController1; // Front Right
     public static SpeedController chassisSpeedController2; // Rear Right
     public static SpeedController chassisSpeedController3; // Rear Left
+    public static SpeedController shooterMotor;
     public static RobotDrive chassismover;
     public static AnalogGyro chassisAnalogGyro1;
     public static PowerDistributionPanel chassisPowerDistributionPanel1;
@@ -103,6 +104,9 @@ public class RobotMap {
         
         fuelspinnies = new Victor(4);
         LiveWindow.addActuator("fuel", "spinnies", (Victor) fuelspinnies);
+        
+        shooterMotor = new Victor(5);
+        LiveWindow.addActuator("shoot", "shoot motor", (Victor) shooterMotor);
         
         fuelLimitSwitch1 = new DigitalInput(2);
         LiveWindow.addSensor("fuel", "Limit Switch 1", fuelLimitSwitch1);

@@ -15,6 +15,8 @@ public class stagValues extends Subsystem {
 	// DRIVING
 	public static final double minimumMotionJoystick = 0.3; // zero for calibration
 	
+	
+	
 
     public void initDefaultCommand() {
         // This is where we put the above values to the SmartDashboard
