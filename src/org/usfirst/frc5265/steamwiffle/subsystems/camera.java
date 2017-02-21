@@ -19,37 +19,54 @@ public class camera extends Subsystem {
 	// camera00 will be facing in the direction of the gear and the shooting
 	// camera01 will be facing in the direction of the intake
 	UsbCamera camera00, camera01;
+	private static final int IMG_WIDTH = 320;
+	private static final int IMG_HEIGHT = 240;
+	
 	
 	// this creates camera00 in a new thread
 	// a new thread means that this works in parallel to the rest of the robot
 	public void cameraInit() {
-	    new Thread(() -> {
+	    // camera00 and camera01
+		new Thread(() -> {
 	        camera00 = CameraServer.getInstance().startAutomaticCapture(0);
-	        camera00.setResolution(320, 240);
+	        camera00.setResolution(IMG_WIDTH, IMG_HEIGHT);
+	        camera01 = CameraServer.getInstance().startAutomaticCapture(1);
+	        camera01.setResolution(IMG_WIDTH, IMG_HEIGHT);
 	        
-	        CvSink cvSink = CameraServer.getInstance().getVideo();
-	        CvSource outputStream = CameraServer.getInstance().putVideo("Blur", 320, 240);
+	        CvSink cvSink00 = CameraServer.getInstance().getVideo();
+	        CvSource outputStream00 = CameraServer.getInstance().putVideo("Gear", IMG_WIDTH, IMG_HEIGHT);
 	        
-	        Mat source = new Mat();
-	        Mat output = new Mat();
+	        CvSink cvSink01 = CameraServer.getInstance().getVideo();
+	        CvSource outputStream01 = CameraServer.getInstance().putVideo("Intake", IMG_WIDTH, IMG_HEIGHT);
+	        
+	        Mat source00 = new Mat();
+	        Mat output00 = new Mat();
+	        //Mat source01 = new Mat();
+	        //Mat output01 = new Mat();
 	        
 	        while(!Thread.interrupted()) {
-	            cvSink.grabFrame(source);
-	            Imgproc.cvtColor(source, output, Imgproc.COLOR_BGR2GRAY);
-	            outputStream.putFrame(output);
+	            cvSink00.grabFrame(source00);
+	            //cvSink01.grabFrame(source01);
+	            
+	            Imgproc.cvtColor(source00, output00, Imgproc.COLOR_BGR2GRAY);
+	            //Imgproc.cvtColor(source01, output01, Imgproc.COLOR_BGR2GRAY);
+	            
+	            outputStream00.putFrame(output00);
+	            //outputStream01.putFrame(output01);
 	        }
 	    }).start();
+		
 	}
 	
 	
-	private static final int IMG_WIDTH = 320;
-	private static final int IMG_HEIGHT = 240;
-	
+	/*
 	private VisionThread visionThread;
 	private double centerX = 0.0;
 	private RobotDrive drive;
 	
 	private final Object imgLock = new Object();
+	*/
+	
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
