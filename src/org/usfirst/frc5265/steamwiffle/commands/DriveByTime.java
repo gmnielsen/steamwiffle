@@ -3,22 +3,19 @@ package org.usfirst.frc5265.steamwiffle.commands;
 import org.usfirst.frc5265.steamwiffle.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class DriveByTime extends Command {
-	// these variables are used throughout this command
-	public double xx,yy,tt;
+	public double xx, yy, tt, time;
 	
+
     public DriveByTime(double x, double y, double t, double time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassis);
-    	// x, y, t, and time are only local to this method
     	setTimeout(time);
-    	// put the values for x, y and t into their public counterparts
     	xx = x;
     	yy = y;
     	tt = t;
@@ -26,24 +23,21 @@ public class DriveByTime extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	// move according to the given values
     	Robot.chassis.driveChassisSteering(xx, yy, tt);
-
-    
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	//Robot.chassis.driveChassisSteering(x, y, t);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return isTimedOut();
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	// stop moving
     	Robot.chassis.driveChassisSteering(0, 0, 0);
     }
 
