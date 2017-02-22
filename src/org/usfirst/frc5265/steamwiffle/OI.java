@@ -60,6 +60,7 @@ public class OI {
     public JoystickButton shootByTime;
     public JoystickButton shoot;
     public JoystickButton intake;
+    public JoystickButton agitate;
     
 
     
@@ -81,6 +82,8 @@ public class OI {
         	shoot.whileHeld(new shooter(0.8));
         intake = new JoystickButton(steering, 4);
         	intake.whileHeld(new IntakeCommand(0.5));
+        agitate = new JoystickButton(steering, 10);
+        	agitate.whileHeld(new AgitateCommand(0.5));
         
 
         // SmartDashboard Buttons, if we need them, go here
