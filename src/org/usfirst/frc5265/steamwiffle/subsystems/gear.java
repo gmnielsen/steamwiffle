@@ -16,6 +16,7 @@ import org.usfirst.frc5265.steamwiffle.commands.*;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -40,6 +41,7 @@ public class gear extends Subsystem {
 	
 	public void intake(double power) {
 		spinnies.set(power);
+		SmartDashboard.putNumber("intake motor", power);
 	}
 
     public void initDefaultCommand() {
@@ -50,7 +52,7 @@ public class gear extends Subsystem {
 
         // Set the default command for a subsystem here.
         // setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new IntakeCommand(0.7));
+    	setDefaultCommand(new IntakeCommand(0));
     }
 }
 

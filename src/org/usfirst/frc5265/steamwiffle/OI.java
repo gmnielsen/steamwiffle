@@ -59,6 +59,8 @@ public class OI {
     public JoystickButton shoot;
     public JoystickButton intake;
     
+
+    
     public OI() {
         
     	// construct the joystick
@@ -75,8 +77,8 @@ public class OI {
         	shootByTime.whenPressed(new ShootByTime(0.8, 5.0));
         shoot = new JoystickButton(steering, 1);
         	shoot.whileHeld(new shooter(0.8));
-        intake = new JoystickButton(steering, 3);
-        	intake.whileHeld(new IntakeCommand(0.7));
+        intake = new JoystickButton(steering, 4);
+        	intake.whileHeld(new IntakeCommand(0.5));
         
         // SmartDashboard Buttons, if we need them, go here
         //SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
@@ -86,6 +88,7 @@ public class OI {
         //SmartDashboard.putData("Instant Command 1", new InstantCommand1());
         //SmartDashboard.putData("Command Group 1", new CommandGroup1());
         //SmartDashboard.putData("PID Command 1", new PIDCommand1());
+        
 
     }
     

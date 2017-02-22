@@ -4,6 +4,7 @@ import org.usfirst.frc5265.steamwiffle.Robot;
 import org.usfirst.frc5265.steamwiffle.subsystems.stagValues;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -29,6 +30,7 @@ public class shooter extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.fuel.shoot(sPower);
+    	
     	
     	
     }
