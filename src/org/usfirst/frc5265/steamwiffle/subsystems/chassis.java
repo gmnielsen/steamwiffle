@@ -50,15 +50,19 @@ public class chassis extends Subsystem {
     // driving the individual wheels. If a certain motor begins to not supply sufficient umph, we can modify it here
     public void driveFrontLeft(double speed) {
         speedController0.set(speed);
+        SmartDashboard.putNumber("FrontLeft", speed);
     }
     public void driveFrontRight(double speed) {
         speedController1.set(speed);
+        SmartDashboard.putNumber("FrontRight", speed);
     }
     public void driveRearRight(double speed) {
         speedController2.set(speed);
+        SmartDashboard.putNumber("RearLeft", speed);
     }
     public void driveRearLeft(double speed) {
         speedController3.set(speed);
+        SmartDashboard.putNumber("RearRight", speed);
     }
     public double [] rotateAngle (double x, double y, int angle) {
     	double cosA = Math.cos(angle * (3.14159 / 180.0));
