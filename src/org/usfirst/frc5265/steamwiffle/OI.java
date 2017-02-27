@@ -81,13 +81,11 @@ public class OI {
         // lights = new JoystickButton(steering, 3);
          //	lights.whenPressed(new Lights());
         
-<<<<<<< Updated upstream
-        // SmartDashboard Buttons
-=======
+
 
         // SmartDashboard Buttons, if we need them, go here
 
->>>>>>> Stashed changes
+
         //SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
         //SmartDashboard.putData("dothis01", new dothis01());
         //SmartDashboard.putData("Setpoint Command 1", new SetpointCommand1());
