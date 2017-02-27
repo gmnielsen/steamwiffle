@@ -7,31 +7,28 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutonomousCommand2 extends Command {
-	public double xx,yy,tt;
-	
-    public AutonomousCommand2(double xx, double yy, double tt, double time) {
+public class RightAllianceAutonomous extends Command {
+	Command autoRight;
+
+    public RightAllianceAutonomous() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassis);
-    	setTimeout(time);
-
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.chassis.driveChassisSteering(xx, yy, tt);
-
-    
+    	autoRight = new RightAlliance();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	autoRight.start();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut();
+        return false;
     }
 
     // Called once after isFinished returns true
@@ -41,6 +38,5 @@ public class AutonomousCommand2 extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }
