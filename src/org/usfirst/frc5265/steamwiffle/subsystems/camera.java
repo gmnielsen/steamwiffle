@@ -1,9 +1,13 @@
 package org.usfirst.frc5265.steamwiffle.subsystems;
 
+<<<<<<< HEAD
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.opencv.core.Mat;
 import org.opencv.core.Rect;
+=======
+import org.opencv.core.Mat;
+>>>>>>> master
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc5265.steamwiffle.RobotMap;
 
@@ -11,17 +15,28 @@ import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
+<<<<<<< HEAD
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.vision.VisionRunner;
 import edu.wpi.first.wpilibj.vision.VisionThread;
+=======
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.vision.VisionThread;
+
+>>>>>>> master
 /**
  *
  */
 public class camera extends Subsystem {
 	public void cameraInit() {
 	    
+<<<<<<< HEAD
 	    RobotMap.init();
+=======
+	    //RobotMap.init();
+>>>>>>> master
 	    new Thread(() -> {
 	        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 	        camera.setResolution(640, 480);
@@ -56,6 +71,12 @@ public class camera extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+<<<<<<< HEAD
     }
 }
 
+=======
+    	cameraInit();
+    }
+}
+>>>>>>> master
