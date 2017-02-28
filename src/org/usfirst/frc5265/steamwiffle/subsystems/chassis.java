@@ -106,10 +106,12 @@ public class chassis extends Subsystem {
     	driveRearRight(RR);
     	
     	// EVALUATION TEST
+    	/*
 		SmartDashboard.putNumber("DB/Slider 0", FL);
 		SmartDashboard.putNumber("DB/Slider 1", FR);
 		SmartDashboard.putNumber("DB/Slider 2", RL);
 		SmartDashboard.putNumber("DB/Slider 3", RR);
+		*/
     	
     }
 

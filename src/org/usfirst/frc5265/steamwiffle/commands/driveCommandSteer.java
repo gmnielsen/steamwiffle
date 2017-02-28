@@ -63,7 +63,7 @@ public class driveCommandSteer extends Command {
 		
     	// t modification
     	if (Math.abs(t) <= minMotion) { // t can be both positive and negative
-    		t = 0;
+    		//t = 0;
     	}
     	else {
     		t = Math.pow(t, pwr) * Math.abs(t)/t; // sqr of value gets better control at low speed

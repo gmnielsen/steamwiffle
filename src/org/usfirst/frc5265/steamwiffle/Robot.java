@@ -60,8 +60,7 @@ public class Robot extends IterativeRobot {
         gear = new gear();
         pIDSubsystem1 = new PIDSubsystem1();
         stagValues = new stagValues();
-
-        //camera = new camera();
+        camera = new camera();
 
     
 
