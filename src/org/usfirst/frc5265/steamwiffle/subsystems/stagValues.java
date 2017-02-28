@@ -13,9 +13,7 @@ public class stagValues extends Subsystem {
 	// and then be put on the dashboard
 	
 	// DRIVING
-<<<<<<< HEAD
-	public static final double minimumMotionJoystick = 0.3;
-=======
+
 	public static final double minimumMotionJoystick = 0.3; // zero for calibration
 	
 	//Left Alliance Autonomous
@@ -31,7 +29,6 @@ public class stagValues extends Subsystem {
 	public static final double caa02dx = 0.0, caa02dy = -0.5, caa02dt = 0.2, caa02dtime = 5.0;
 	public static final double caa03dx = 0.5, caa03dy = 0.5, caa03dt = 0.0, caa03dtime = 5.0;
 	
->>>>>>> master
 
 	
 // camera stuff

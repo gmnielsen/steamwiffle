@@ -34,8 +34,5 @@ public class ToggleCamera extends Command {
     protected void interrupted() {
     	end();
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master
+
