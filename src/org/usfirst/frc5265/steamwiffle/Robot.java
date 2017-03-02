@@ -12,12 +12,13 @@
 package org.usfirst.frc5265.steamwiffle;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import edu.wpi.first.wpilibj.networktables.*;
 import org.usfirst.frc5265.steamwiffle.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import org.usfirst.frc5265.steamwiffle.subsystems.*;
@@ -34,6 +35,7 @@ public class Robot extends IterativeRobot {
 	// necessary for autonomous
     Command autonomousCommand;
     SendableChooser <Command> autoChooser;
+    NetworkTable table;
 
 
     // each subsystem must be declared
@@ -60,7 +62,8 @@ public class Robot extends IterativeRobot {
         gear = new gear();
         pIDSubsystem1 = new PIDSubsystem1();
         stagValues = new stagValues();
-
+        table = NetworkTable.getTable("datetable"); 
+        table.putString(Harrison, "Harrison");
         //camera = new camera();
 
     
@@ -132,7 +135,30 @@ public class Robot extends IterativeRobot {
     /**
      * This function is called periodically during operator control
      */
-    public void teleopPeriodic() {
+    @SuppressWarnings("deprecation")
+	public void teleopPeriodic() {
+    	double x=0;
+    	double y=0;
+    	double z=0;
+    	double w=0;
+    	String jake;
+    
+    	while (isOperatorControl() && isEnabled()){
+    		Timer.delay(.25);
+    		x += 0.5;
+    	    y += 1.0;
+    		table.putNumber("x", x);
+    		table.putNumber("y", y);
+    		//NetworkTable table = NetworkTable.getTable("datatable");
+    		table.getNumber("x", z);
+    		table.getNumber("y", w);
+    		jake = table.getString("x", );
+       		z += 100;
+    	    w += 100;
+    		SmartDashboard.putDouble("z", z);
+    		SmartDashboard.putDouble("w", w);
+    	}
+    	
         Scheduler.getInstance().run();
     }
 
