@@ -45,7 +45,7 @@ public class Robot extends IterativeRobot {
     public static PIDSubsystem1 pIDSubsystem1;
     public static stagValues stagValues;
     public static camera camera;
-
+    public static witch witch;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -60,6 +60,7 @@ public class Robot extends IterativeRobot {
         gear = new gear();
         pIDSubsystem1 = new PIDSubsystem1();
         stagValues = new stagValues();
+        witch = new witch();
 
         //camera = new camera();
 

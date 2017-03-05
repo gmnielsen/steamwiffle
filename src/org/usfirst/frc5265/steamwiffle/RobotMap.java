@@ -50,6 +50,8 @@ public class RobotMap {
     public static AnalogAccelerometer chassisAnalogAccelerometer1;
     public static SpeedController fuelspinnies;
     public static SpeedController agitator;
+    public static SpeedController brush;
+    public static SpeedController witch;
     public static DigitalInput fuelLimitSwitch1;
     public static Ultrasonic gearUltrasonic1;
     //public static Solenoid gearSolenoid1;
@@ -111,8 +113,13 @@ public class RobotMap {
         
         agitator = new Victor(6);
         LiveWindow.addActuator("agitate", "agitate motor", (Victor) agitator);
-       
         
+        brush = new Victor (7);
+        LiveWindow.addActuator("brush", "brush motor", (Victor) brush);
+        
+        witch = new Victor (8);
+        LiveWindow.addActuator("witch", "witch motor", (Victor) witch);
+       
         fuelLimitSwitch1 = new DigitalInput(2);
         LiveWindow.addSensor("fuel", "Limit Switch 1", fuelLimitSwitch1);
         
