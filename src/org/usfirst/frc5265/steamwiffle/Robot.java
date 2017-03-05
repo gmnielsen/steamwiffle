@@ -48,7 +48,9 @@ public class Robot extends IterativeRobot {
     public static PIDSubsystem1 pIDSubsystem1;
     public static stagValues stagValues;
     public static camera camera;
-
+    public Robot() {
+    	table = NetworkTable.getTable("GRIP/myContoursReport");
+    }
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -66,9 +68,17 @@ public class Robot extends IterativeRobot {
         table = NetworkTable.getTable("datetable"); 
         table.putString(Harrison, "Harrison");
         //camera = new camera();
-
-    
-
+     
+        	double [] defaultValue = new double[0];
+        	while (true) {
+        		double[] areas = table.getNumberArray("area", defaultValue);
+        		System.out.print("areas: ");
+        		for (double area : areas) {
+        		System.out.print(areas + " ");
+        	}
+    System.out.println();
+    Timer.delay(1);
+        	
 
         
         
@@ -92,7 +102,7 @@ public class Robot extends IterativeRobot {
         
 
         autonomousCommand = new CenterAllianceAutonomous();
-
+        	}
    
 
     }
