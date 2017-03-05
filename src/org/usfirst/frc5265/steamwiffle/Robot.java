@@ -32,6 +32,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
+	private static final String Harrison = null;
 	// necessary for autonomous
     Command autonomousCommand;
     SendableChooser <Command> autoChooser;
@@ -152,7 +153,7 @@ public class Robot extends IterativeRobot {
     		//NetworkTable table = NetworkTable.getTable("datatable");
     		table.getNumber("x", z);
     		table.getNumber("y", w);
-    		jake = table.getString("x", );
+    		jake = table.getString("x");
        		z += 100;
     	    w += 100;
     		SmartDashboard.putDouble("z", z);
