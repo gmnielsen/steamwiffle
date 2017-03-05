@@ -85,17 +85,17 @@ public class OI {
         	driveTest1.whenPressed(new DriveByTime(stagValues.testax, stagValues.testay, stagValues.testat, stagValues.testatime));
         driveTest2 = new JoystickButton(steering, 2);
          	driveTest2.whenPressed(new DriveByTime(stagValues.testax2, stagValues.testay2, stagValues.testat2, stagValues.testatime2));	
-        driveTest3 = new JoystickButton(steering, 1);
+        driveTest3 = new JoystickButton(steering, 3);
         	driveTest3.whenPressed(new DriveByTime(stagValues.testax3, stagValues.testay3, stagValues.testat3, stagValues.testatime3)); 	
-        driveTest4 = new JoystickButton(steering, 1);
+        driveTest4 = new JoystickButton(steering, 4);
         	driveTest4.whenPressed(new DriveByTime(stagValues.testax4, stagValues.testay4, stagValues.testat4, stagValues.testatime4)); 	
-        driveTest5 = new JoystickButton(steering, 1);
+        driveTest5 = new JoystickButton(steering, 5);
         	driveTest5.whenPressed(new DriveByTime(stagValues.testax5, stagValues.testay5, stagValues.testat5, stagValues.testatime5));
-        driveTest6 = new JoystickButton(steering, 1);
+        driveTest6 = new JoystickButton(steering, 6);
         	driveTest6.whenPressed(new DriveByTime(stagValues.testax6, stagValues.testay6, stagValues.testat6, stagValues.testatime6));	
-        driveTest7 = new JoystickButton(steering, 1);
+        driveTest7 = new JoystickButton(steering, 7);
         	driveTest7.whenPressed(new DriveByTime(stagValues.testax7, stagValues.testay7, stagValues.testat7, stagValues.testatime7));	
-        driveTest8 = new JoystickButton(steering, 1);
+        driveTest8 = new JoystickButton(steering, 8);
         	driveTest8.whenPressed(new DriveByTime(stagValues.testax8, stagValues.testay8, stagValues.testat8, stagValues.testatime8));	
         	
         	// SmartDashboard Buttons, if we need them, go here
