@@ -28,8 +28,18 @@ public class stagValues extends Subsystem {
 	public static final double caa02dx = 0.0, caa02dy = -0.5, caa02dt = 0.2, caa02dtime = 5.0;
 	public static final double caa03dx = 0.5, caa03dy = 0.5, caa03dt = 0.0, caa03dtime = 5.0;
 	
-
-    public void initDefaultCommand() {
+	// test buttons
+	public static final double testax = 0.25, testay = 0.0, testat = 0.0, testatime = 0.25;
+	public static final double testax2 = 0.5, testay2 = 0.0, testat2 = 0.0, testatime2 = 0.25;
+	public static final double testax3 = 0.75, testay3 = 0.0, testat3 = 0.0, testatime3 = 0.25;
+	public static final double testax4 = 1.0, testay4 = 0.0, testat4 = 0.0, testatime4 = 0.25;
+	
+	public static final double testax5 = 0.25, testay5 = 0.0, testat5 = 0.0, testatime5 = 0.5;
+	public static final double testax6 = 0.5, testay6 = 0.0, testat6 = 0.0, testatime6 = 0.5;
+	public static final double testax7 = 0.75, testay7 = 0.0, testat7 = 0.0, testatime7 = 0.5;
+	public static final double testax8 = 1.0, testay8 = 0.0, testat8 = 0.0, testatime8 = 0.5;
+    
+	public void initDefaultCommand() {
         // This is where we put the above values to the SmartDashboard
     	// using SmartDashboard.put ...
     	
