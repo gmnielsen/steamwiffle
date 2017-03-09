@@ -3,6 +3,7 @@ package org.usfirst.frc5265.steamwiffle.subsystems;
 import org.usfirst.frc5265.steamwiffle.RobotMap;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -16,6 +17,7 @@ public class witch extends Subsystem {
 
 	public void winch (double power) {
 		witch.set(power);
+		SmartDashboard.putNumber("witch motor", power);
 	}
 	
     public void initDefaultCommand() {

@@ -86,7 +86,7 @@ public class OI {
         agitate = new JoystickButton(steering, 10);
         	agitate.whileHeld(new AgitateCommand(0.5, 0.25));
         witch = new JoystickButton(steering, 5);
-        	witch.whenPressed(new witchUp(1.0));             
+        	witch.whileHeld(new witchUp(1.0));             
         
 
         // SmartDashboard Buttons, if we need them, go here
