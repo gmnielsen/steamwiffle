@@ -12,6 +12,7 @@
 package org.usfirst.frc5265.steamwiffle;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -22,7 +23,7 @@ import org.usfirst.frc5265.steamwiffle.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import org.usfirst.frc5265.steamwiffle.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import edu.wpi.first.wpilibj.networktables.*;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -30,10 +31,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
+	
+
 public class Robot extends IterativeRobot {
 	// necessary for autonomous
+	NetworkTable table;
     Command autonomousCommand;
     SendableChooser <Command> autoChooser;
+    
 
 
     // each subsystem must be declared
@@ -45,12 +50,18 @@ public class Robot extends IterativeRobot {
     public static PIDSubsystem1 pIDSubsystem1;
     public static stagValues stagValues;
     public static camera camera;
-
+    
+    public Robot() {
+    	table = NetworkTable.getTable("Doc");
+    }
+    
+	
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
-    public void robotInit() {
+    @SuppressWarnings("deprecation")
+	public void robotInit() {
     	// start the RobotMap subsystem
     	RobotMap.init();
         // start each subsystem
@@ -60,7 +71,22 @@ public class Robot extends IterativeRobot {
         gear = new gear();
         pIDSubsystem1 = new PIDSubsystem1();
         stagValues = new stagValues();
-
+        
+        double[] defaultValue = new double[0];
+        while (true) {
+        	double[] areas = table.getNumberArray("area", defaultValue);
+        	System.out.print("area: ");
+        	for (double area : areas) {
+        		System.out.print(area + " ");
+        		SmartDashboard.putDouble("Network test", area);
+        	}
+        	System.out.println();
+        	Timer.delay(1);
+        
+    
+    
+	
+    
         //camera = new camera();
 
     
@@ -90,7 +116,7 @@ public class Robot extends IterativeRobot {
         autonomousCommand = new CenterAllianceAutonomous();
 
    
-
+        }
     }
 
     /**
