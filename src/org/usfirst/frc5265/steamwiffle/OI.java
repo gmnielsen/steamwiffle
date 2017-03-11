@@ -84,7 +84,7 @@ public class OI {
         intake = new JoystickButton(steering, 4);
         	intake.toggleWhenPressed(new IntakeCommand(0.75));
         agitate = new JoystickButton(steering, 10);
-        	agitate.toggleWhenPressed(new AgitateCommand(1.0, 1.0));
+        	agitate.toggleWhenPressed(new AgitateCommand(1.0, 0.5));
         witch = new JoystickButton(steering, 5);
         	witch.toggleWhenPressed(new witchUp(1.0));             
         

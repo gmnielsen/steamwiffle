@@ -20,7 +20,7 @@ public class RightAlliance extends CommandGroup {
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(new DriveByTime(raa1dx,raa1dy, raa1dt, raa1dtime));
+    	//addSequential(new DriveByTime(raa1dx,raa1dy, raa1dt, raa1dtime));
     	addSequential(new DriveByTime(raa2dx, raa2dy, raa2dt, raa2dtime));
         // To run multiple commands at the same time,
         // use addParallel()
