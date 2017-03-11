@@ -16,8 +16,8 @@ public class stagValues extends Subsystem {
 	public static final double minimumMotionJoystick = 0.3; // zero for calibration
 
 	//Left Alliance Autonomous
-	public static final double laa01dx = 0.5, laa01dy = 0.0, laa01dt = 0.0, laa01dtime = 5.0;
-	public static final double laa02dx = 0.0, laa02dy = 0.5, laa02dt = 0.0, laa02dtime = 5.0;
+	public static final double laa01dx = 0.0, laa01dy = 0.0, laa01dt = 0.0, laa01dtime = 1.0;
+	public static final double laa02dx = 0.0, laa02dy = 0.5, laa02dt = 0.09, laa02dtime = 1.0;
 	
 	// Right Alliance Autonomous 
 	public static final double raa01dx = -0.5, raa01dy = 0.0, raa01dt = 0.0, raa01dtime = 5.0;

@@ -80,11 +80,11 @@ public class OI {
         shootByTime = new JoystickButton(steering, 2);
         	shootByTime.whenPressed(new ShootByTime(0.8, 5.0));
         shoot = new JoystickButton(steering, 1);
-        	shoot.whileHeld(new shooter(0.8));
+        	shoot.whileHeld(new shooter(0.5));
         intake = new JoystickButton(steering, 4);
-        	intake.whileHeld(new IntakeCommand(0.5));
+        	intake.toggleWhenPressed(new IntakeCommand(0.5));
         agitate = new JoystickButton(steering, 10);
-        	agitate.whileHeld(new AgitateCommand(0.5, 0.25));
+        	agitate.toggleWhenPressed(new AgitateCommand(0.5, 0.25));
         witch = new JoystickButton(steering, 5);
         	witch.whileHeld(new witchUp(1.0));             
         
