@@ -111,13 +111,13 @@ public class RobotMap {
         shooterMotor = new Victor(5);
         LiveWindow.addActuator("shoot", "shoot motor", (Victor) shooterMotor);
         
-        agitator = new Victor(6);
+        agitator = new Victor(7);
         LiveWindow.addActuator("agitate", "agitate motor", (Victor) agitator);
         
-        brush = new Victor (7);
+        brush = new Victor (8);
         LiveWindow.addActuator("brush", "brush motor", (Victor) brush);
         
-        witch = new Victor (8);
+        witch = new Victor (6);
         LiveWindow.addActuator("witch", "witch motor", (Victor) witch);
        
         fuelLimitSwitch1 = new DigitalInput(2);

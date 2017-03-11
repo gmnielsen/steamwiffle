@@ -80,13 +80,13 @@ public class OI {
         shootByTime = new JoystickButton(steering, 2);
         	shootByTime.whenPressed(new ShootByTime(0.8, 5.0));
         shoot = new JoystickButton(steering, 1);
-        	shoot.whileHeld(new shooter(0.5));
+        	shoot.whileHeld(new shooter(0.48));
         intake = new JoystickButton(steering, 4);
-        	intake.toggleWhenPressed(new IntakeCommand(0.5));
+        	intake.toggleWhenPressed(new IntakeCommand(0.75));
         agitate = new JoystickButton(steering, 10);
-        	agitate.toggleWhenPressed(new AgitateCommand(0.5, 0.25));
+        	agitate.toggleWhenPressed(new AgitateCommand(1.0, 1.0));
         witch = new JoystickButton(steering, 5);
-        	witch.whileHeld(new witchUp(1.0));             
+        	witch.toggleWhenPressed(new witchUp(1.0));             
         
 
         // SmartDashboard Buttons, if we need them, go here
