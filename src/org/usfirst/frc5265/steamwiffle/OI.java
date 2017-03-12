@@ -80,7 +80,7 @@ public class OI {
         shootByTime = new JoystickButton(steering, 2);
         	shootByTime.whenPressed(new ShootByTime(0.8, 5.0));
         shoot = new JoystickButton(steering, 1);
-        	shoot.whileHeld(new shooter(0.48));
+        	shoot.whileHeld(new shooter(0.55));
         intake = new JoystickButton(steering, 4);
         	intake.toggleWhenPressed(new IntakeCommand(0.75));
         agitate = new JoystickButton(steering, 10);

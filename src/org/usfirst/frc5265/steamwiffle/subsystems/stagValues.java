@@ -24,7 +24,7 @@ public class stagValues extends Subsystem {
 	public static final double raa02dx = 0.0, raa02dy = 1.0, raa02dt = 0.0, raa02dtime = 1.0;
 	
 	// Center Alliance Autonomous
-	public static final double caa01dx = 0.0, caa01dy = 1.0, caa01dt = 0.0, caa01dtime = 0.33;
+	public static final double caa01dx = 0.0, caa01dy = 1.0, caa01dt = 0.0, caa01dtime = 1.1;
 	public static final double caa02dx = 0.0, caa02dy = 0.5, caa02dt = 0.2, caa02dtime =1.0;
 	public static final double caa03dx = 0.0, caa03dy = 0.0, caa03dt = 0.0, caa03dtime = 1.0;
 	
