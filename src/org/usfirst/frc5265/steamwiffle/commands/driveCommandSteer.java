@@ -29,7 +29,8 @@ public class driveCommandSteer extends Command {
     protected void execute() {
 
     	
-    	
+    	double f = 1.0;
+    	double voltage = DriverStation.getInstance().getBatteryVoltage();
     	// variables for the raw data from the joystick
     	double x, y, t, throttle, minMotion;
     	
@@ -45,11 +46,17 @@ public class driveCommandSteer extends Command {
     	// if we want to modify these variables, wgge modify them here
     	
     	//the tester
+    	if(voltage < 7.5){
+    		f = .75;
+    		SmartDashboard.putDouble("f", f);
+    		Timer.delay(1);
+    		f = 1.0;
+    		SmartDashboard.putDouble("f", f);
+    	}
     	
     	// Incorporating throttle 
-    	throttle = (-throttle + 1)/2;	
-    	//the test change
-    	
+    	throttle = (-throttle + 1)/2;
+    	throttle = throttle * f;
     	// x modification
     	if (Math.abs(x) <= minMotion) { // x can be both positive and negative
     		x = 0;
