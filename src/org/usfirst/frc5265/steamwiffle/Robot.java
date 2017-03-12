@@ -24,6 +24,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import org.usfirst.frc5265.steamwiffle.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.networktables.*;
+import edu.wpi.first.wpilibj.networktables.*;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -38,6 +40,7 @@ public class Robot extends IterativeRobot {
 	NetworkTable table;
     Command autonomousCommand;
     SendableChooser <Command> autoChooser;
+    public int robotTimeJ;
     
 
 
@@ -62,6 +65,9 @@ public class Robot extends IterativeRobot {
      */
     @SuppressWarnings("deprecation")
 	public void robotInit() {
+    	
+    	double iValue = table.getInt("network test", robotTimeJ);
+    	SmartDashboard.putNumber("iValue", iValue);
     	// start the RobotMap subsystem
     	RobotMap.init();
         // start each subsystem
@@ -71,7 +77,8 @@ public class Robot extends IterativeRobot {
         gear = new gear();
         pIDSubsystem1 = new PIDSubsystem1();
         stagValues = new stagValues();
-        
+      /*  
+       * THIS IS FOR CONTOUR REPORT *
         double[] defaultValue = new double[0];
         while (true) {
         	double[] areas = table.getNumberArray("area", defaultValue);
@@ -83,7 +90,7 @@ public class Robot extends IterativeRobot {
         	System.out.println();
         	Timer.delay(1);
         
-    
+    */
     
 	
     
@@ -117,7 +124,7 @@ public class Robot extends IterativeRobot {
 
    
         }
-    }
+    
 
     /**
      * This function is called when the disabled button is hit.
