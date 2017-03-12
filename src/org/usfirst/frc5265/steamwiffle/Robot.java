@@ -67,7 +67,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
     	
     	double iValue = table.getInt("network test", robotTimeJ);
-    	SmartDashboard.putNumber("iValue", iValue);
+    	SmartDashboard.putNumber("iValue", robotTimeJ);
     	// start the RobotMap subsystem
     	RobotMap.init();
         // start each subsystem
