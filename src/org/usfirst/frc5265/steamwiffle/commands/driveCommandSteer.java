@@ -44,6 +44,8 @@ public class driveCommandSteer extends Command {
     	
     	// if we want to modify these variables, wgge modify them here
     	
+    	//the tester
+    	
     	// Incorporating throttle 
     	throttle = (-throttle + 1)/2;	
     	//the test change
