@@ -49,15 +49,15 @@ public class driveCommandSteer extends Command {
     	if(voltage < 7.5){
     		f = .75;
     		SmartDashboard.putDouble("f", f);
-    		Timer.delay(1);
-    		f = 1.0;
-    		SmartDashboard.putDouble("f", f);
     	}
-    	
+    	else{
+    		f = 1.0;
+    	}
     	// Incorporating throttle 
-    	throttle = (-throttle + 1)/2;
-    	throttle = throttle * f;
-    	// x modification
+    	throttle = ((-throttle + 1)/2);
+    	throttle = (throttle * f);
+    	SmartDashboard.putDouble("throttle", throttle);
+        	// x modification
     	if (Math.abs(x) <= minMotion) { // x can be both positive and negative
     		x = 0;
     	}
