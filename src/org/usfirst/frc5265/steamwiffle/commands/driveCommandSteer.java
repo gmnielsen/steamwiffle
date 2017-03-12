@@ -3,6 +3,8 @@ package org.usfirst.frc5265.steamwiffle.commands;
 import org.usfirst.frc5265.steamwiffle.Robot;
 import org.usfirst.frc5265.steamwiffle.subsystems.*;
 
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -25,6 +27,8 @@ public class driveCommandSteer extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+
+    	
     	
     	// variables for the raw data from the joystick
     	double x, y, t, throttle, minMotion;
@@ -38,10 +42,11 @@ public class driveCommandSteer extends Command {
     	minMotion = stagValues.minimumMotionJoystick;
     	double pwr = 2.0;
     	
-    	// if we want to modify these variables, we modify them here
+    	// if we want to modify these variables, wgge modify them here
     	
     	// Incorporating throttle 
-    	throttle = (-throttle + 1)/2;
+    	throttle = (-throttle + 1)/2;	
+    	//the test change
     	
     	// x modification
     	if (Math.abs(x) <= minMotion) { // x can be both positive and negative
@@ -52,6 +57,7 @@ public class driveCommandSteer extends Command {
     		x = x * throttle;
     		}
 		
+    
     	// y modification
     	if (Math.abs(y) <= minMotion) { // y can be both positive and negative
     		y = 0;
