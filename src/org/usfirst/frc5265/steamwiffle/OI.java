@@ -62,6 +62,7 @@ public class OI {
     public JoystickButton intake;
     public JoystickButton agitate;
     public JoystickButton witch;
+    public JoystickButton witch2;
     
 
     
@@ -86,7 +87,9 @@ public class OI {
         agitate = new JoystickButton(steering, 10);
         	agitate.toggleWhenPressed(new AgitateCommand(1.0, 0.5));
         witch = new JoystickButton(steering, 5);
-        	witch.toggleWhenPressed(new witchUp(1.0));             
+        	witch.toggleWhenPressed(new witchUp(1.0)); 
+        witch2 = new JoystickButton(steering,6);
+        	witch2.toggleWhenPressed(new witchUp(-1.0));
         
 
         // SmartDashboard Buttons, if we need them, go here

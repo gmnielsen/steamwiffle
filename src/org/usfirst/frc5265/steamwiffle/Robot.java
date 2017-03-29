@@ -14,6 +14,7 @@ package org.usfirst.frc5265.steamwiffle;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -34,6 +35,9 @@ public class Robot extends IterativeRobot {
 	// necessary for autonomous
     Command autonomousCommand;
     SendableChooser <Command> autoChooser;
+    
+    Ultrasonic space = new Ultrasonic(1,1);
+    
 
 
     // each subsystem must be declared
@@ -61,6 +65,9 @@ public class Robot extends IterativeRobot {
         pIDSubsystem1 = new PIDSubsystem1();
         stagValues = new stagValues();
         witch = new witch();
+        
+        
+        space.setAutomaticMode(true);
 
         //camera = new camera();
 
@@ -128,6 +135,8 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        
+        
     }
 
     /**
@@ -142,5 +151,11 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+    }
+    
+    public void ultrasonicSample() {
+    	double range = space.getRangeInches();
+    	SmartDashboard.putNumber("Distance", range);
+    	
     }
 }
