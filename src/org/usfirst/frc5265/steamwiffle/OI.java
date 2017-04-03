@@ -57,12 +57,14 @@ public class OI {
     public Joystick steering;
     public JoystickButton plus90;
     public JoystickButton minus90;
+    public JoystickButton turnme45;
     public JoystickButton shootByTime;
     public JoystickButton shoot;
     public JoystickButton intake;
     public JoystickButton agitate;
     public JoystickButton witch;
     public JoystickButton witch2;
+    public JoystickButton ultra;
     
 
     
@@ -78,18 +80,22 @@ public class OI {
         	plus90.whenPressed(new buttonplus90());
         minus90 = new JoystickButton(steering, 7);
         	minus90.whenPressed(new buttonminus90());
+        turnme45 = new JoystickButton(steering, 12);
+        	turnme45.toggleWhenPressed(new button45());
         shootByTime = new JoystickButton(steering, 2);
-        	shootByTime.whenPressed(new ShootByTime(0.8, 5.0));
+        	shootByTime.whenPressed(new ShootByTime(0.6, 15.0));
         shoot = new JoystickButton(steering, 1);
         	shoot.whileHeld(new shooter(0.55));
         intake = new JoystickButton(steering, 4);
         	intake.toggleWhenPressed(new IntakeCommand(0.75));
         agitate = new JoystickButton(steering, 10);
-        	agitate.toggleWhenPressed(new AgitateCommand(1.0, 0.5));
+        	agitate.toggleWhenPressed(new AgitateCommand(0.75, 0.75));
         witch = new JoystickButton(steering, 5);
         	witch.toggleWhenPressed(new witchUp(1.0)); 
-        witch2 = new JoystickButton(steering,6);
-        	witch2.toggleWhenPressed(new witchUp(-1.0));
+        //witch2 = new JoystickButton(steering,6);
+        	//witch2.toggleWhenPressed(new witchUp(-1.0));
+        //ultra = new JoystickButton(steering, 11);
+        	//ultra.toggleWhenPressed(new BootySteering());
         
 
         // SmartDashboard Buttons, if we need them, go here

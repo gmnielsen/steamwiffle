@@ -7,36 +7,31 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AgitateCommand extends Command {
-	public double aPower, bPower;
-    public AgitateCommand(double power, double powerBrush) {
+public class button45 extends Command {
+
+    public button45() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.air);
-    	aPower = power;
-    	bPower = powerBrush;
+    	requires(Robot.chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.air.agitate(aPower);
-    	Robot.air.brush(bPower);	
+    	Robot.chassis.angleOrient = Robot.chassis.angleOrient + 45;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.air.agitate(0);
-    	Robot.air.brush(0);
+    	Robot.chassis.angleOrient = Robot.chassis.angleOrient - 45;
     }
 
     // Called when another command which requires one or more of the same

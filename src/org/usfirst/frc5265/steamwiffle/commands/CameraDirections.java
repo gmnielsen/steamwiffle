@@ -3,29 +3,43 @@ package org.usfirst.frc5265.steamwiffle.commands;
 import org.usfirst.frc5265.steamwiffle.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.networktables.*;
 
 /**
  *
  */
-public class AgitateCommand extends Command {
-	public double aPower, bPower;
-    public AgitateCommand(double power, double powerBrush) {
+public class CameraDirections extends Command {
+	NetworkTable Pi;
+	Command workPlease;
+	public double x,y,t,time;
+	
+
+    public CameraDirections() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.air);
-    	aPower = power;
-    	bPower = powerBrush;
+    	requires(Robot.chassis);
+    	Pi = NetworkTable.getTable("Raspberry");
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.air.agitate(aPower);
-    	Robot.air.brush(bPower);	
+    	workPlease = new DriveByTime( x, y, t, time);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double DistanceToPeg = Pi.getNumber("DistanceToPeg", 0);
+    	double LateralToPeg = Pi.getNumber("LateralToPeg", 0);
+    	double TwistToPeg = Pi.getNumber("TwistToPeg", 0);
+    	double TimeThisTakes = Pi.getNumber("TimeThisTakes", 0);
     	
+    	x = DistanceToPeg;
+    	y = LateralToPeg;
+    	t = TwistToPeg;
+    	time = TimeThisTakes;
+    	
+    	workPlease.start();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -35,8 +49,6 @@ public class AgitateCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.air.agitate(0);
-    	Robot.air.brush(0);
     }
 
     // Called when another command which requires one or more of the same
