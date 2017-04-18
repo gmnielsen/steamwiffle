@@ -18,7 +18,7 @@ public class witch extends Subsystem {
 
 	public void winch (double power) {
 		
-		throttle = Robot.oi.getThrottle();
+		//throttle = Robot.oi.getThrottle();
 		// throttle = (1+throttle)/2;
 		witch.set(power);
 		SmartDashboard.putNumber("witch motor", power);

@@ -11,133 +11,371 @@
 
 package org.usfirst.frc5265.steamwiffle;
 
-//import org.opencv.*;
-import org.usfirst.frc5265.steamwiffle.commands.*;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.*;
-import org.usfirst.frc5265.steamwiffle.subsystems.*;
-import edu.wpi.first.wpilibj.interfaces.*;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.XboxController;
 
 
 /**
- * This class is the glue that binds the controls on the physical operator
- * interface to the commands and command groups that allow control of the robot.
+ * A nearly drop in replacement for Joystick using an XBOX USB Controller
+ * @author Gustave Michel
  */
-public class OI {
-    //// CREATING BUTTONS
-    // One type of button is a joystick button which is any button on a joystick.
-    // You create one by telling it which joystick it's on and which button
-    // number it is.
-    // Joystick stick = new Joystick(port);
-    // Button button = new JoystickButton(stick, buttonNumber);
+public class OI extends GenericHID implements GamepadBase {
+	private final int m_port;
+    public OI (int port) {
+		super(port);
+		// TODO Auto-generated constructor stub
+	}
 
-    // There are a few additional built in buttons you can use. Additionally,
-    // by subclassing Button you can create custom triggers and bind those to
-    // commands the same as any other Button.
-
-    //// TRIGGERING COMMANDS WITH BUTTONS
-    // Once you have a button, it's trivial to bind it to a button in one of
-    // three ways:
-
-    // Start the command when the button is pressed and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenPressed(new ExampleCommand());
-
-    // Run the command while the button is being held down and interrupt it once
-    // the button is released.
-    // button.whileHeld(new ExampleCommand());
-
-    // Start the command when the button is released  and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenReleased(new ExampleCommand());
-
-	// each button must be declared
-    public JoystickButton click01;
-    public Joystick steering;
-    public JoystickButton plus90;
-    public JoystickButton minus90;
-    public JoystickButton turnme45;
-    public JoystickButton shootByTime;
-    public JoystickButton shoot;
-    public JoystickButton intake;
-    public JoystickButton agitate;
-    public JoystickButton witch;
-    public JoystickButton witch2;
-    public JoystickButton ultra;
+	private DriverStation m_ds;
+    //private final int m_port;
     
-
-    
-    public OI() {
+    /**
+     * Represents an analog axis on a joystick.
+     */
+    public static class AxisType {
         
-    	// construct the joystick
-    	steering = new Joystick(0);
+        /**
+         * The integer value representing this enumeration
+         */
+        public final int value;
+        private static final int kLeftX_val = 1;
+        private static final int kLeftY_val = 2;
+        private static final int kTrigger_val = 3;
+        private static final int kRightX_val = 4;
+        private static final int kRightY_val = 5;
+        private static final int kDLeftRight_val = 6;
         
-        // construct each button and what happens when it is used
-        //click01 = new JoystickButton(steering, 1);
-        	//click01.whileHeld(new dothis01());
-        plus90 = new JoystickButton(steering, 8);
-        	plus90.whenPressed(new buttonplus90());
-        minus90 = new JoystickButton(steering, 7);
-        	minus90.whenPressed(new buttonminus90());
-        turnme45 = new JoystickButton(steering, 12);
-        	turnme45.toggleWhenPressed(new button45());
-        shootByTime = new JoystickButton(steering, 2);
-        	shootByTime.whenPressed(new ShootByTime(0.6, 15.0));
-        shoot = new JoystickButton(steering, 1);
-        	shoot.whileHeld(new shooter(0.55));
-        intake = new JoystickButton(steering, 4);
-        	intake.toggleWhenPressed(new IntakeCommand(0.75));
-        agitate = new JoystickButton(steering, 10);
-        	agitate.toggleWhenPressed(new AgitateCommand(0.75, 0.75));
-        witch = new JoystickButton(steering, 5);
-        	witch.toggleWhenPressed(new witchUp(1.0)); 
-        //witch2 = new JoystickButton(steering,6);
-        	//witch2.toggleWhenPressed(new witchUp(-1.0));
-        //ultra = new JoystickButton(steering, 11);
-        	//ultra.toggleWhenPressed(new BootySteering());
+        private AxisType(int value) {
+            this.value = value;
+        }
         
-
-        // SmartDashboard Buttons, if we need them, go here
-
-        //SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
-        //SmartDashboard.putData("dothis01", new dothis01());
-        //SmartDashboard.putData("Setpoint Command 1", new SetpointCommand1());
-        //SmartDashboard.putData("Timed Command 1", new TimedCommand1());
-        //SmartDashboard.putData("Instant Command 1", new InstantCommand1());
-        //SmartDashboard.putData("Command Group 1", new CommandGroup1());
-        //SmartDashboard.putData("PID Command 1", new PIDCommand1());
+        /**
+         * Axis: Left X
+         */
+        public static final AxisType kLeftX = new AxisType(kLeftX_val);
         
-
-
+        /**
+         * Axis: Left Y
+         */
+        public static final AxisType kLeftY = new AxisType(kLeftY_val);
+        
+        /**
+         * Axis: Triggers
+         */
+        public static final AxisType kTrigger = new AxisType(kTrigger_val);
+        
+        /**
+         * Axis: Right X
+         */
+        public static final AxisType kRightX = new AxisType(kRightX_val);
+        
+        /**
+         * Axis: Right Y
+         */
+        public static final AxisType kRightY = new AxisType(kRightY_val);
+        
+        /**
+         * Axis: D-Pad Left-Right
+         */
+        public static final AxisType kDLeftRight = new AxisType(kDLeftRight_val);
     }
     
-    // these methods return raw data from the joystick
-    // we should probably comment out the radian vector methods, as we aren't using them
-    public Joystick getsteering() {
-        return steering;
+    /**
+     * Represents a digital button on a joystick.
+     */
+    public static class ButtonType {
+        
+        /**
+         * The integer value representing this enumeration
+         */
+        public final int value;
+        private static final int kA_val = 1;
+        private static final int kB_val = 2;
+        private static final int kX_val = 3;
+        private static final int kY_val = 4;
+        private static final int kL_val = 5;
+        private static final int kR_val = 6;
+        private static final int kBack_val = 7;
+        private static final int kStart_val = 8;
+        private static final int kLeftStick_val = 9;
+        private static final int kRightStick_val = 10;
+        private static final int kRTrigger_val = 11;
+        private static final int kLTrigger_val = 12;
+        
+        private ButtonType(int value) {
+            this.value = value;
+        }
+        
+        /**
+         * Button: X-Joystick
+         */
+        public static final ButtonType kLeftStick = new ButtonType(kLeftStick_val);
+        
+        /**
+         * Button: Y-Joystick
+         */
+        public static final ButtonType kRightStick = new ButtonType(kRightStick_val);
+        
+        /**
+         * Button: X
+         */
+        public static final ButtonType kX = new ButtonType(kX_val);
+        
+        /**
+         * Button: Y
+         */
+        public static final ButtonType kY = new ButtonType(kY_val);
+        
+        /**
+         * Button: A
+         */
+        public static final ButtonType kA = new ButtonType(kA_val);
+        
+        /**
+         * Button: B
+         */
+        public static final ButtonType kB = new ButtonType(kB_val);
+        
+        /**
+         * Button: R1
+         */
+        public static final ButtonType kR = new ButtonType(kR_val);
+        
+        /**
+         * Button: L1
+         */
+        public static final ButtonType kL = new ButtonType(kL_val);
+        
+        /**
+         * Button: Select
+         */
+        public static final ButtonType kStart = new ButtonType(kStart_val);
+        
+        /**
+         * Button: Right Trigger
+         */
+        public static final ButtonType kRTrigger = new ButtonType(kRTrigger_val);
+        
+        /**
+         * Button: Left Trigger
+         */
+        public static final ButtonType kLTrigger = new ButtonType(kLTrigger_val);
+        
+        /**
+         * Button: Start
+         */
+        public static final ButtonType kBack = new ButtonType(kBack_val);
     }
-    public double getXSteer() {
-        return steering.getX(); //look up what the actual axis number is
+    
+    
+    /**
+     * Constructor
+     * @param port USB Port on DriverStation
+     */
+    public void XboxController(int port) {
+        //super();
+        m_port = port;
+        m_ds = DriverStation.getInstance();
     }
-    public double getYSteer() {
-        return steering.getY(); //look up what the actual axis number is
+    
+    /**
+     * Get Value from an Axis
+     * @param axis Axis Number
+     * @return Value from Axis (-1 to 1)
+     */
+    public double getRawAxis(int axis) {
+        return m_ds.getStickAxis(m_port, axis);
     }
-    public double getTwistSteer() {
-        return steering.getTwist(); //look up what the actual axis number is
+    
+    /**
+     * Get Value from an Axis
+     * @param axis AxisType
+     * @return 
+     */
+    public double getAxis(AxisType axis) {
+        return getRawAxis(axis.value);
     }
-    public double getPolarDegrees() {
-    	return steering.getDirectionDegrees();
+    
+    /**
+     * Retrieve value for X axis
+     * @param hand Hand associated with the Joystick
+     * @return Value of Axis (-1 to 1)
+     */
+    public double getX(Hand hand) {
+        if(hand.value == Hand.kRight.value) {
+            return getAxis(AxisType.kRightX);
+        } else if(hand.value == Hand.kLeft.value) {
+            return getAxis(AxisType.kLeftX);
+        } else {
+            return 0;
+        }
     }
-    public double getPolarRadians() {
-    	return steering.getDirectionRadians();
+    
+    /**
+     * Retrieve value for Y axis
+     * @param hand Hand associated with the Joystick
+     * @return Value of Axis (-1 to 1)
+     */
+    public double getY(Hand hand) {
+        if(hand.value == Hand.kRight.value) {
+            return getAxis(AxisType.kRightY);
+        } else if(hand.value == Hand.kLeft.value) {
+            return getAxis(AxisType.kLeftY);
+        } else {
+            return 0;
+        }
     }
-    public double getPolarMagnitude() {
-    	return steering.getMagnitude();	
+    
+    /**
+     * Unused
+     * @param hand Unused
+     * @return 0
+     */
+    public double getZ(Hand hand) {
+        return 0;
     }
+    
+    /**
+     * Gets Value from D-Pad Left and Right Axis
+     * @return Axis Value (-1 to 1)
+     */
+    public double getTwist() {
+        return getAxis(AxisType.kDLeftRight);
+    }
+    
+    /**
+     * Gets Value from Back Triggers
+     * @return Axis Value (-1 to 1)
+     */
     public double getThrottle() {
-    	return steering.getThrottle();
+        return getAxis(AxisType.kTrigger);
     }
     
+    /**
+     * Gets value from a button
+     * @param button number of the button 
+     * @return State of the button
+     */
+    public boolean getRawButton(int button) {
+        if(button == ButtonType.kRTrigger.value) { //Abstracted Buttons from Analog Axis
+            if(getThrottle() <= -.6) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        if(button == ButtonType.kLTrigger.value) { //Abstracted Buttons from Analog Axis
+            if(getThrottle() >= .6) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        return ((0x1 << (button - 1)) & m_ds.getStickButtons(m_port)) != 0;
+    }
+    
+    /**
+     * Get Value from a button
+     * @param button Button Type
+     * @return 
+     */
+    public boolean getButton(ButtonType button) {
+        return getRawButton(button.value);
+    }
+    
+    /**
+     * Get Trigger Value as Button
+     * @param hand Hand associated with button
+     * @return false
+     */
+    public boolean getTrigger(Hand hand) {
+        if(hand == Hand.kLeft) {
+            return getButton(ButtonType.kLTrigger);
+        } else if(hand == Hand.kRight) {
+            return getButton(ButtonType.kRTrigger);
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Get Button from Joystick
+     * @param hand hand associated with the button
+     * @return Button Status (true or false)
+     */
+    public boolean getTop(Hand hand) {
+        if(hand == Hand.kRight) {
+            return getButton(ButtonType.kRightStick);
+        } else if(hand == Hand.kLeft) {
+            return getButton(ButtonType.kLeftStick);
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Get Value from Back buttons
+     * @param hand hand associated with the button
+     * @return state of left or right 
+     */
+    public boolean getBumper(Hand hand) {
+        if(hand == Hand.kRight) {
+            return getButton(ButtonType.kR);
+        } else if(hand == Hand.kLeft) {
+            return getButton(ButtonType.kL);
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Get State of Select Button
+     * @return State of button
+     */
+    public boolean getStart() {
+        return getButton(ButtonType.kStart);
+    }
+    
+    /**
+     * Get State of Back Button
+     * @return State of button
+     */
+    public boolean getBack() {
+        return getButton(ButtonType.kBack);
+    }
+    
+    /**
+     * Get State of A Button
+     * @return State of button
+     */
+    public boolean getAButton() {
+        return getButton(ButtonType.kA);
+    }
+    
+    /**
+     * Get State of B Button
+     * @return State of button
+     */
+    public boolean getBButton() {
+        return getButton(ButtonType.kB);
+    }
+    
+    /**
+     * Get State of X Button
+     * @return State of button
+     */
+    public boolean getXButton() {
+        return getButton(ButtonType.kX);
+    }
+    
+    /**
+     * Get State of Y Button
+     * @return State of button
+     */
+    public boolean getYButton() {
+        return getButton(ButtonType.kY);
+    }
 }
-

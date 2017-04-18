@@ -2,11 +2,14 @@ package org.usfirst.frc5265.steamwiffle.commands;
 
 import org.usfirst.frc5265.steamwiffle.Robot;
 import org.usfirst.frc5265.steamwiffle.subsystems.*;
+import org.usfirst.frc5265.steamwiffle.Xbox;
+
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.GenericHID.*;
 
 
 /**
@@ -14,6 +17,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class driveCommandSteer extends Command {
  
+	static double x;
+	static double y;
+	static double t;
 	
     public driveCommandSteer() {
         // Use requires() here to declare subsystem dependencies
@@ -32,13 +38,13 @@ public class driveCommandSteer extends Command {
     	double f = 1.0;
     	double voltage = DriverStation.getInstance().getBatteryVoltage();
     	// variables for the raw data from the joystick
-    	double x, y, t, throttle, minMotion;
+    	double throttle, minMotion;
     	
     	// load the variables from the joystick
-    	x = Robot.oi.getXSteer();
-    	y = Robot.oi.getYSteer();
-    	t = Robot.oi.getTwistSteer();
-    	throttle = Robot.oi.getThrottle();
+    	x = Robot.oi.getX(Hand.kLeft);
+    	y = Robot.oi.getY(Hand.kLeft);
+    	t = Robot.oi.getX(Hand.kRight);
+    	//throttle = Robot.oi.getThrottle();
     	//	minMotion = SmartDashboard.getNumber("minimumMotionJoystick", 0.0);
     	minMotion = stagValues.minimumMotionJoystick;
     	double pwr = 2.0;
@@ -54,16 +60,16 @@ public class driveCommandSteer extends Command {
     		f = 1.0;
     	}
     	// Incorporating throttle 
-    	throttle = ((-throttle + 1)/2);
-    	throttle = (throttle * f);
-    	SmartDashboard.putDouble("throttle", throttle);
+    	//throttle = ((-throttle + 1)/2);
+    	//throttle = (throttle * f);
+    	//SmartDashboard.putDouble("throttle", throttle);
         	// x modification
     	if (Math.abs(x) <= minMotion) { // x can be both positive and negative
     		x = 0;
     	}
     	else {
     		//x = Math.pow(x, pwr) * Math.abs(x)/x; // sqr of value gets better control at low speed
-    		x = x * throttle;
+    		x = x; //* throttle;
     		}
 		
     
@@ -73,7 +79,7 @@ public class driveCommandSteer extends Command {
     	}
     	else {
     		//y = Math.pow(y, pwr) * Math.abs(y)/y; // sqr of value gets better control at low speed
-    		y = y* throttle;
+    		y = y; //* throttle;
     		}
 		
     	// t modification
@@ -82,7 +88,7 @@ public class driveCommandSteer extends Command {
     	}
     	else {
     		t = Math.pow(t, pwr) * Math.abs(t)/t; // sqr of value gets better control at low speed
-    		t = t * throttle;
+    		t = t; //* throttle;
     	}
 		
     	

@@ -30,8 +30,8 @@ public class BootySteering extends Command {
     	}else if (dis == 2) {
     		y = 0.0;
     	}
-    	x = Robot.oi.getXSteer();
-    	t = Robot.oi.getTwistSteer();
+    	//x = Robot.oi.getXSteer();
+    	//t = Robot.oi.getTwistSteer();
     	time = 0.1;
     }
 
