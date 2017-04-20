@@ -42,9 +42,11 @@ public class Xbox  {
     }
 	
 	public double getRawAxis(int axis) {
-        return m_ds.getStickAxis(xport, axis);
+        return control.getRawAxis(axis);
     }
     
+	//my simplified code
+	//public double Raxis = control.getRawAxis(0);
 	
 	 public double getAxis(AxisType axis) {
 	        return getRawAxis(axis.value);
