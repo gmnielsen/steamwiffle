@@ -45,7 +45,7 @@ public class Robot extends IterativeRobot {
     //public AnalogInput ultra = new AnalogInput(0);
     
     // each subsystem must be declared
-    public static Xbox oi;
+    public static Xbox xbox;
     public static chassis chassis;
     public static air air;
     public static fuel fuel;
@@ -75,6 +75,7 @@ public class Robot extends IterativeRobot {
         stagValues = new stagValues();
         witch = new witch();
         ultrab = new ultraBooty();
+        // oi = new Xbox();
         
         
         //space.setAutomaticMode(true);
@@ -101,8 +102,8 @@ public class Robot extends IterativeRobot {
         //(which it very likely will), subsystems are not guaranteed to be
         // constructed yet. Thus, their requires() statements may grab null
         // pointers. Bad news. Don't move it.
-        oi = new Xbox();
-
+        xbox = new Xbox();
+        
         // instantiate the command used for the autonomous period
         
         //autonomousCommand = new AutonomousCommand();
@@ -156,6 +157,7 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) autonomousCommand.cancel();
         
         
+        
     }
 
     /**
@@ -163,7 +165,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        
+       
         //double distance = ultra.getValue();
         //SmartDashboard.putNumber("Distance", distance);
     }

@@ -11,12 +11,16 @@
 
 package org.usfirst.frc5265.steamwiffle;
 
-import org.usfirst.frc5265.steamwiffle.OI.AxisType;
+//import org.usfirst.frc5265.steamwiffle.OI.AxisType;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID.*;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GamepadBase;
+import edu.wpi.first.wpilibj.smartdashboard.*;
+import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc5265.steamwiffle.commands.*;
+//import edu.wpi.first.wpilibj.buttons.*;
 //import edu.wpi.first.wpilibj.GenericHID;
 
 
@@ -26,21 +30,65 @@ import edu.wpi.first.wpilibj.GamepadBase;
  */
 public class Xbox  {
 	
-	public XboxController control;
-	private int xport;
-	private DriverStation m_ds;
+	Command shooter;
+	Command intake;
+	
+	
+	XboxController control;
+	//private int xport;
+	//private DriverStation m_ds;
 	
 	
 	public Xbox() {
-		control = new XboxController(0);
-		}
+		
+		
+		control = new XboxController(1);
+		
+		shooter = new shooter(0.5);
+		intake = new IntakeCommand(0.75);
+				
+		
+		boolean a = control.getRawButton(1); {
+				//a = false;
+				while (a==true){
+					
+				shooter.start();
+			
+				}
+			}
+			
+			
+			boolean b = control.getBButton(); {
+				b = false;
+				if (b==true){
+					
+					intake.start();
+				}
+					else if (b==false){
+						intake.cancel();
+					
+					}
+			}
+				
+				/**
+			 boolean x = control.getXButton();
+			 boolean y = control.getYButton();
+			 boolean start = control.getStartButton();
+			 boolean back = control.getBackButton();
+			 boolean RaxisButton = control.getStickButton(Hand.kRight);
+			 boolean LaxisButton = control.getStickButton(Hand.kLeft);
+			**/
+	}	
 	
+		
+	
+	/**
 	public void XboxController(int port) {
         
         xport = port;
         m_ds = DriverStation.getInstance();
     }
-	
+	**/
 	public double getRawAxis(int axis) {
         return control.getRawAxis(axis);
     }
@@ -101,6 +149,8 @@ public class Xbox  {
       */
      public static final AxisType kDLeftRight = new AxisType(kDLeftRight_val);
  }
+	
+
 	
 	public double getY(Hand hand) {
         if(hand.value == Hand.kRight.value) {

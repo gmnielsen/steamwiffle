@@ -25,6 +25,7 @@ public class driveCommandSteer extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassis);
+    	
     }
 
     // Called just before this Command runs the first time
@@ -41,9 +42,9 @@ public class driveCommandSteer extends Command {
     	double throttle, minMotion;
     	
     	// load the variables from the joystick
-    	x = Robot.oi.getX(Hand.kLeft);
-    	y = Robot.oi.getY(Hand.kLeft);
-    	t = Robot.oi.getX(Hand.kRight);
+    	x = Robot.xbox.getX(Hand.kLeft);
+    	y = Robot.xbox.getY(Hand.kLeft);
+    	t = Robot.xbox.getX(Hand.kRight);
     	//throttle = Robot.oi.getThrottle();
     	//	minMotion = SmartDashboard.getNumber("minimumMotionJoystick", 0.0);
     	minMotion = stagValues.minimumMotionJoystick;
