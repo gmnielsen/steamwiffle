@@ -49,7 +49,7 @@ public class Xbox  {
 				
 		
 		boolean a = control.getRawButton(1); {
-				//a = false;
+				
 				while (a==true){
 					
 				shooter.start();
@@ -59,13 +59,13 @@ public class Xbox  {
 			
 			
 			boolean b = control.getBButton(); {
-				b = false;
+				
 				if (b==true){
 					
 					intake.start();
 				}
 					else if (b==false){
-						intake.cancel();
+						intake.cancel();;
 					
 					}
 			}
