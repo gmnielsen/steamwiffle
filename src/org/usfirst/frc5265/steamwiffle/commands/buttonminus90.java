@@ -1,7 +1,9 @@
 package org.usfirst.frc5265.steamwiffle.commands;
 
 import org.usfirst.frc5265.steamwiffle.Robot;
+import org.usfirst.frc5265.steamwiffle.RobotMap;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -18,7 +20,7 @@ public class buttonminus90 extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.chassis.angleOrient = Robot.chassis.angleOrient - 90;
-
+    	RobotMap.solewhatchamacallit.set(DoubleSolenoid.Value.kReverse);
     }
 
     // Called repeatedly when this Command is scheduled to run

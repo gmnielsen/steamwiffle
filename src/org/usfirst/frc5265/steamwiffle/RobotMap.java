@@ -60,7 +60,8 @@ public class RobotMap {
     //public static AnalogPotentiometer pIDSubsystem1AnalogPotentiometer1;
     //public static Solenoid pIDSubsystem1Solenoid1;
     //public static SpeedController pIDSubsystem1SpeedController1;
-
+    
+    public static DoubleSolenoid solewhatchamacallit = new DoubleSolenoid(0,1);
     
     public static void init() {
         // declare our Victors, in a clockwise direction across the front and then the back,
@@ -109,6 +110,8 @@ public class RobotMap {
         
         gearUltrasonic1 = new Ultrasonic(0, 1);
         LiveWindow.addSensor("gear", "Ultrasonic 1", gearUltrasonic1);
+        
+        solewhatchamacallit.set(DoubleSolenoid.Value.kOff);
         
         //airCompressor1 = new Compressor(0);
         

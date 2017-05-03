@@ -14,6 +14,7 @@ package org.usfirst.frc5265.steamwiffle;
 //import org.opencv.*;
 import org.usfirst.frc5265.steamwiffle.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.*;
 import org.usfirst.frc5265.steamwiffle.subsystems.*;
@@ -70,6 +71,7 @@ public class OI {
         	plus90.whenPressed(new buttonplus90());
         minus90 = new JoystickButton(steering, 7);
         	minus90.whenPressed(new buttonminus90());
+       
         
 
         // SmartDashboard Buttons, if we need them, go here
