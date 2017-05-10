@@ -54,6 +54,7 @@ public class RobotMap {
     public static SpeedController witch;
     public static DigitalInput fuelLimitSwitch1;
     public static Ultrasonic gearUltrasonic1;
+    public static DoubleSolenoid solewhat1;
     //public static Solenoid gearSolenoid1;
     //public static Compressor airCompressor1;
     //public static Solenoid airSolenoid1;
@@ -126,7 +127,11 @@ public class RobotMap {
         gearUltrasonic1 = new Ultrasonic(0, 1);
         LiveWindow.addSensor("gear", "Ultrasonic 1", gearUltrasonic1);
         
-        //airCompressor1 = new Compressor(0);
+       solewhat1 = new DoubleSolenoid(0,1);
+       solewhat1.set(DoubleSolenoid.Value.kOff);
+       //airCompressor1 = new Compressor(0);
+       
+        
         
         //airSolenoid1 = new Solenoid(0, 0);
         //LiveWindow.addActuator("air", "Solenoid 1", airSolenoid1);

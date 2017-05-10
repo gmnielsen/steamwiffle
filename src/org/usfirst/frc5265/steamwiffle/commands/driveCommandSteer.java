@@ -42,9 +42,9 @@ public class driveCommandSteer extends Command {
     	double throttle, minMotion;
     	
     	// load the variables from the joystick
-    	x = Robot.xbox.getX(Hand.kLeft);
-    	y = Robot.xbox.getY(Hand.kLeft);
-    	t = Robot.xbox.getX(Hand.kRight);
+    	x = Robot.xbox.getY(Hand.kRight);
+    	y = Robot.xbox.getY(Hand.kRight);
+    	t = Robot.xbox.getY(Hand.kLeft);
     	//throttle = Robot.oi.getThrottle();
     	//	minMotion = SmartDashboard.getNumber("minimumMotionJoystick", 0.0);
     	minMotion = stagValues.minimumMotionJoystick;

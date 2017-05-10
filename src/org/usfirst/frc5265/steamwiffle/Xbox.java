@@ -30,54 +30,59 @@ import org.usfirst.frc5265.steamwiffle.commands.*;
  */
 public class Xbox  {
 	
-	Command shooter;
-	Command intake;
+	public static Command shooter;
+	public static Command intake;
+	public static Command witch;
+	public static Command plus90;
+	private static Command minus90;
+	
+	XboxController control = new XboxController(0);
 	
 	
-	XboxController control;
-	//private int xport;
-	//private DriverStation m_ds;
+	public boolean a = control.getAButton();
+	public boolean b = control.getRawButton(2);
 	
 	
 	public Xbox() {
 		
 		
-		control = new XboxController(1);
 		
 		shooter = new shooter(0.5);
 		intake = new IntakeCommand(0.75);
-				
+		witch = new witchUp(1.0);	
+		plus90 = new buttonplus90();
+		minus90 = new buttonminus90();
 		
-		boolean a = control.getRawButton(1); {
-				
-				while (a==true){
-					
-				shooter.start();
+		while (a==true){
+			shooter.start();
+		}
+		
+		while (b==true){
+			intake.start();
+		}
 			
-				}
+			
+				
+		boolean x = control.getXButton();{
+			while (x==true){
+				witch.start();
 			}
-			
-			
-			boolean b = control.getBButton(); {
-				
-				if (b==true){
-					
-					intake.start();
-				}
-					else if (b==false){
-						intake.cancel();;
-					
-					}
+		}
+		boolean y = control.getYButton();
+    	boolean start = control.getStartButton();
+	    boolean back = control.getBackButton();
+		boolean RaxisButton = control.getStickButton(Hand.kRight);
+		boolean LaxisButton = control.getStickButton(Hand.kLeft);
+		boolean RightBumper = control.getBumper(Hand.kRight);{
+			while (RightBumper==true){
+				plus90.start();
 			}
-				
-				/**
-			 boolean x = control.getXButton();
-			 boolean y = control.getYButton();
-			 boolean start = control.getStartButton();
-			 boolean back = control.getBackButton();
-			 boolean RaxisButton = control.getStickButton(Hand.kRight);
-			 boolean LaxisButton = control.getStickButton(Hand.kLeft);
-			**/
+		}
+		boolean LeftBumper = control.getBumper(Hand.kLeft);	{
+			while (LeftBumper==true){
+				minus90.start();
+			}
+		}
 	}	
 	
 		
@@ -108,7 +113,7 @@ public class Xbox  {
 	        public final int value;
 	        private static final int kLeftX_val = 1;
 	        private static final int kLeftY_val = 2;
-	        private static final int kTrigger_val = 3;
+	        private static final int kTrigger_val = 1;
 	        private static final int kRightX_val = 4;
 	        private static final int kRightY_val = 5;
 	        private static final int kDLeftRight_val = 6;
