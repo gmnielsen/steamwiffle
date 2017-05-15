@@ -127,8 +127,8 @@ public class RobotMap {
         gearUltrasonic1 = new Ultrasonic(0, 1);
         LiveWindow.addSensor("gear", "Ultrasonic 1", gearUltrasonic1);
         
-       solewhat1 = new DoubleSolenoid(0,1);
-       solewhat1.set(DoubleSolenoid.Value.kOff);
+       //solewhat1 = new DoubleSolenoid(0,1);
+       //solewhat1.set(DoubleSolenoid.Value.kOff);
        //airCompressor1 = new Compressor(0);
        
         

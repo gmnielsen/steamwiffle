@@ -34,13 +34,17 @@ public class Xbox  {
 	public static Command intake;
 	public static Command witch;
 	public static Command plus90;
-	private static Command minus90;
+	public static Command minus90;
 	
-	XboxController control = new XboxController(0);
+	//declare controller
+	XboxController controlXbox = new XboxController(0);
 	
+	//declare buttons and leave time for controller to set up
+	//maybe this will work
+	//idrk tho
 	
-	public boolean a = control.getAButton();
-	public boolean b = control.getRawButton(2);
+	public boolean x = controlXbox.getXButton();
+	public boolean b = controlXbox.getRawButton(2);
 	
 	
 	public Xbox() {
@@ -53,32 +57,32 @@ public class Xbox  {
 		plus90 = new buttonplus90();
 		minus90 = new buttonminus90();
 		
-		while (a==true){
+		if (x==true){
 			shooter.start();
 		}
 		
-		while (b==true){
+		if (b==true){
 			intake.start();
 		}
 			
 			
 				
-		boolean x = control.getXButton();{
-			while (x==true){
+		boolean a = controlXbox.getAButton();{
+			while (a==true){
 				witch.start();
 			}
 		}
-		boolean y = control.getYButton();
-    	boolean start = control.getStartButton();
-	    boolean back = control.getBackButton();
-		boolean RaxisButton = control.getStickButton(Hand.kRight);
-		boolean LaxisButton = control.getStickButton(Hand.kLeft);
-		boolean RightBumper = control.getBumper(Hand.kRight);{
+		boolean y = controlXbox.getYButton();
+    	boolean start = controlXbox.getStartButton();
+	    boolean back = controlXbox.getBackButton();
+		boolean RaxisButton = controlXbox.getStickButton(Hand.kRight);
+		boolean LaxisButton = controlXbox.getStickButton(Hand.kLeft);
+		boolean RightBumper = controlXbox.getBumper(Hand.kRight);{
 			while (RightBumper==true){
 				plus90.start();
 			}
 		}
-		boolean LeftBumper = control.getBumper(Hand.kLeft);	{
+		boolean LeftBumper = controlXbox.getBumper(Hand.kLeft);	{
 			while (LeftBumper==true){
 				minus90.start();
 			}
@@ -95,7 +99,7 @@ public class Xbox  {
     }
 	**/
 	public double getRawAxis(int axis) {
-        return control.getRawAxis(axis);
+        return controlXbox.getRawAxis(axis);
     }
     
 	//my simplified code
@@ -111,9 +115,9 @@ public class Xbox  {
 	         * The integer value representing this enumeration
 	         */
 	        public final int value;
-	        private static final int kLeftX_val = 1;
-	        private static final int kLeftY_val = 2;
-	        private static final int kTrigger_val = 1;
+	        private static final int kLeftX_val = 0;
+	        private static final int kLeftY_val = 1;
+	        private static final int kTrigger_val = 3;
 	        private static final int kRightX_val = 4;
 	        private static final int kRightY_val = 5;
 	        private static final int kDLeftRight_val = 6;
