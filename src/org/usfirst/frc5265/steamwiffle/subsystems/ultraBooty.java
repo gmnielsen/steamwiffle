@@ -18,14 +18,16 @@ public class ultraBooty extends Subsystem {
     	//booty.setAutomaticMode(true);
          //Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	range = SmartDashboard.getNumber("Distance", range);
+    	//range = SmartDashboard.getNumber("Distance", range);
     	
-    }
+}
     
+    /*
     @SuppressWarnings("deprecation")
-	public void ultrabootySample() {
+    public void ultrabootySample() {
     	
     }
     //SmartDashboard.putNumber("Distance", range);
+*/
 }
 

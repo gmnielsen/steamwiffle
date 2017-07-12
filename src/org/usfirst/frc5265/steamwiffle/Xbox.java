@@ -28,6 +28,8 @@ import org.usfirst.frc5265.steamwiffle.commands.*;
  * A nearly drop in replacement for Joystick using an XBOX USB Controller
  * @author Gustave Michel
  */
+
+
 public class Xbox  {
 	
 	public static Command shooter;
@@ -35,40 +37,44 @@ public class Xbox  {
 	public static Command witch;
 	public static Command plus90;
 	public static Command minus90;
+	public static Command test1;
 	
 	//declare controller
-	XboxController controlXbox = new XboxController(0);
+	public XboxController controlXbox = new XboxController(0);
 	
 	//declare buttons and leave time for controller to set up
 	//maybe this will work
 	//idrk tho
 	
-	public boolean x = controlXbox.getXButton();
-	public boolean b = controlXbox.getRawButton(2);
 	
 	
+	
+	
+	/*
 	public Xbox() {
 		
-		
+		boolean a = controlXbox.getAButton();
+		boolean b = controlXbox.getRawButton(2);
 		
 		shooter = new shooter(0.5);
 		intake = new IntakeCommand(0.75);
 		witch = new witchUp(1.0);	
 		plus90 = new buttonplus90();
 		minus90 = new buttonminus90();
+		test1 = new TheTestButton();
 		
-		if (x==true){
-			shooter.start();
+		while (a==true){
+			test1.start();
 		}
 		
-		if (b==true){
-			intake.start();
+		while (b==true){
+			shooter.start();
 		}
 			
 			
 				
-		boolean a = controlXbox.getAButton();{
-			while (a==true){
+		boolean x = controlXbox.getXButton();{
+			while (x==true){
 				witch.start();
 			}
 		}
@@ -88,8 +94,10 @@ public class Xbox  {
 			}
 		}
 	}	
+	*/
 	
-		
+	
+	
 	
 	/**
 	public void XboxController(int port) {
@@ -172,7 +180,7 @@ public class Xbox  {
     }
 	
 	public final double getX(Hand hand) {
-        if(hand.value == Hand.kRight.value) {
+		if(hand.value == Hand.kRight.value) {
             return getAxis(AxisType.kRightX);
         } else if(hand.value == Hand.kLeft.value) {
             return getAxis(AxisType.kLeftX);

@@ -35,6 +35,7 @@ public class stagValues extends Subsystem {
     	// using SmartDashboard.put ...
     	
     	SmartDashboard.putNumber("minJoystickMotion", minimumMotionJoystick);
+    	SmartDashboard.putString("the test", "This is annoying, it sucks, and doesnt work");
 
     }
 }
