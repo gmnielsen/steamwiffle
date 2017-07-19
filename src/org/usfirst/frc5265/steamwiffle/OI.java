@@ -14,6 +14,7 @@ package org.usfirst.frc5265.steamwiffle;
 //import org.opencv.*;
 import org.usfirst.frc5265.steamwiffle.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.*;
 import org.usfirst.frc5265.steamwiffle.subsystems.*;
@@ -72,7 +73,7 @@ public class OI {
         
     	// construct the joystick
     	steering = new Joystick(0);
-        
+       
         // construct each button and what happens when it is used
         //click01 = new JoystickButton(steering, 1);
         	//click01.whileHeld(new dothis01());
@@ -118,10 +119,10 @@ public class OI {
         return steering;
     }
     public double getXSteer() {
-        return steering.getX(); //look up what the actual axis number is
+        return steering.getX(Hand.kLeft); //look up what the actual axis number is
     }
     public double getYSteer() {
-        return steering.getY(); //look up what the actual axis number is
+        return steering.getY(Hand.kRight); //look up what the actual axis number is
     }
     public double getTwistSteer() {
         return steering.getTwist(); //look up what the actual axis number is
