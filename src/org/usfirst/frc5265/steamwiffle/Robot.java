@@ -54,7 +54,7 @@ public class Robot extends IterativeRobot {
     public static stagValues stagValues;
     public static camera camera;
     public static witch witch;
-    public static ultraBooty ultrab;
+    //public static ultraBooty ultrab;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -74,7 +74,7 @@ public class Robot extends IterativeRobot {
         pIDSubsystem1 = new PIDSubsystem1();
         stagValues = new stagValues();
         witch = new witch();
-        ultrab = new ultraBooty();
+        //ultrab = new ultraBooty();
         
         
         //space.setAutomaticMode(true);

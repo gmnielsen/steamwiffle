@@ -122,10 +122,10 @@ public class OI {
         return steering.getX(Hand.kLeft); //look up what the actual axis number is
     }
     public double getYSteer() {
-        return steering.getY(Hand.kRight); //look up what the actual axis number is
+        return steering.getY(Hand.kLeft); //look up what the actual axis number is
     }
     public double getTwistSteer() {
-        return steering.getTwist(); //look up what the actual axis number is
+        return steering.getRawAxis(4); //look up what the actual axis number is
     }
     public double getPolarDegrees() {
     	return steering.getDirectionDegrees();
