@@ -80,10 +80,10 @@ public class chassis extends Subsystem {
         	RR =- x_speed;
     		
     	}else{
-    		FL = y_speed;
-        	FR = y_speed;
-        	RL = y_speed;
-        	RR = y_speed; 	
+    		FL = -y_speed;
+        	FR = -y_speed;
+        	RL = -y_speed;
+        	RR = -y_speed; 	
     	}
     	
     	
