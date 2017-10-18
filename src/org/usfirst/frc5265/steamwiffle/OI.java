@@ -81,18 +81,7 @@ public class OI {
         	plus90.whenPressed(new buttonplus90());
         minus90 = new JoystickButton(steering, 7);
         	minus90.whenPressed(new buttonminus90());
-        turnme45 = new JoystickButton(steering, 12);
-        	turnme45.toggleWhenPressed(new button45());
-        shootByTime = new JoystickButton(steering, 2);
-        	shootByTime.whenPressed(new ShootByTime(0.6, 15.0));
-        shoot = new JoystickButton(steering, 1);
-        	shoot.whileHeld(new shooter(0.55));
-        intake = new JoystickButton(steering, 4);
-        	intake.toggleWhenPressed(new IntakeCommand(0.75));
-        agitate = new JoystickButton(steering, 10);
-        	agitate.toggleWhenPressed(new AgitateCommand(0.75, 0.75));
-        witch = new JoystickButton(steering, 5);
-        	witch.toggleWhenPressed(new witchUp(1.0)); 
+       
         //witch2 = new JoystickButton(steering,6);
         	//witch2.toggleWhenPressed(new witchUp(-1.0));
         //ultra = new JoystickButton(steering, 11);
@@ -119,13 +108,13 @@ public class OI {
         return steering;
     }
     public double getXSteer() {
-        return steering.getX(Hand.kLeft); //look up what the actual axis number is
+        return steering.getRawAxis(4); //look up what the actual axis number is
     }
     public double getYSteer() {
-        return steering.getY(Hand.kLeft); //look up what the actual axis number is
+        return steering.getRawAxis(1); //look up what the actual axis number is
     }
     public double getTwistSteer() {
-        return steering.getRawAxis(4); //look up what the actual axis number is
+        return steering.getRawAxis(0); //look up what the actual axis number is
     }
     public double getPolarDegrees() {
     	return steering.getDirectionDegrees();

@@ -37,7 +37,7 @@ public class driveCommandSteer extends Command {
     	// load the variables from the joystick
     	x = Robot.oi.getXSteer();
     	y = Robot.oi.getYSteer();
-    	t = Robot.oi.getTwistSteer();
+    	t = 0.0;
     	throttle = Robot.oi.getThrottle();
     	//	minMotion = SmartDashboard.getNumber("minimumMotionJoystick", 0.0);
     	minMotion = stagValues.minimumMotionJoystick;
@@ -130,7 +130,7 @@ public class driveCommandSteer extends Command {
     	
     	    	
     	// steer using those variables
-    	Robot.chassis.driveChassisSteering(x, y, t);
+    	Robot.chassis.driveChassisSteering(x, y);
     	
     }
 

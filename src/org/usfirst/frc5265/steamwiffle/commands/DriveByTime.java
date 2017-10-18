@@ -23,7 +23,7 @@ public class DriveByTime extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.chassis.driveChassisSteering(xx, yy, tt);
+    	Robot.chassis.driveChassisSteering(xx, yy);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -38,7 +38,7 @@ public class DriveByTime extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.chassis.driveChassisSteering(0, 0, 0);
+    	Robot.chassis.driveChassisSteering(0, 0);
     }
 
     // Called when another command which requires one or more of the same

@@ -47,13 +47,9 @@ public class Robot extends IterativeRobot {
     // each subsystem must be declared
     public static OI oi;
     public static chassis chassis;
-    public static air air;
-    public static fuel fuel;
-    public static gear gear;
-    public static PIDSubsystem1 pIDSubsystem1;
+
     public static stagValues stagValues;
-    public static camera camera;
-    public static witch witch;
+
     //public static ultraBooty ultrab;
     /**
      * This function is run when the robot is first started up and should be
@@ -68,12 +64,8 @@ public class Robot extends IterativeRobot {
     	RobotMap.init();
         // start each subsystem
     	chassis = new chassis();
-        air = new air();
-        fuel = new fuel();
-        gear = new gear();
-        pIDSubsystem1 = new PIDSubsystem1();
         stagValues = new stagValues();
-        witch = new witch();
+       
         //ultrab = new ultraBooty();
         
         
