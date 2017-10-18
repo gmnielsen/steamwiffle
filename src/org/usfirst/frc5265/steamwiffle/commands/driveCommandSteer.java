@@ -94,39 +94,6 @@ public class driveCommandSteer extends Command {
 		SmartDashboard.putNumber("DB/Slider 3", throttle);
     	*/
 		
-    	/* THIS CODE MARKED FOR DELETION BECAUSE SQR OF X,Y AND T VALUES GIVES SIMILAR CONTROL TO IGNORING
-    	 * ANYTHING BELOW MINIMUM MOTION
-    	
-    	// x modification
-    	if (Math.abs(x) <= minMotion) { // x can be both positive and negative
-    		x = 0;
-    	}
-    	else {
-    		// x = expMotion * (x - minMotion*Math.abs(x)/x); // abs(x)/x changes the sign of minMotion
-    		x = Math.pow(x, 2) * Math.abs(x)/x; // sqr of value gets better control at low speed
-    		x = x * throttle;
-    	}
-    	
-    	// y modification
-    	if (Math.abs(y) <= minMotion) { // y can be both positive and negative
-    		y = 0;
-    	}
-    	else {
-    		// y = expMotion * (y - minMotion*Math.abs(y)/y); // abs(y)/y changes the sign of minMotion
-    		y = Math.pow(y, 2) * Math.abs(y)/y; // sqr of value gets better control at low speed
-    		y = y* throttle;
-    	}
-    	
-    	// t modification
-    	if (Math.abs(t) <= minMotion) { // t can be both positive and negative
-    		t = 0;
-    	}
-    	else {
-    		// t = expMotion * (t - minMotion*Math.abs(t)/t); // abs(t)/t changes the sign of minMotion
-    		t = Math.pow(t, 2) * Math.abs(t)/t; // sqr of value gets better control at low speed
-    		t = t * throttle;
-    	}
-    	*/
     	
     	    	
     	// steer using those variables
