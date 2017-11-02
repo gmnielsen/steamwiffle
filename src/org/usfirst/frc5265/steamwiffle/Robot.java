@@ -45,6 +45,7 @@ public class Robot extends IterativeRobot {
     double [] yNet = new double[10];
     double [] wNet = new double[10];
     double [] hNet = new double[10];
+    double[] tester = new double[3];
     //public AnalogInput ultra = new AnalogInput(0);
     
     // each subsystem must be declared
@@ -156,23 +157,28 @@ public class Robot extends IterativeRobot {
         
         //double distance = ultra.getValue();
         //SmartDashboard.putNumber("Distance", distance)
-
+       
        while (isOperatorControl() && isEnabled()){ 
        double[] x = Raspberry.getNumberArray("x", xNet);
        double[] y = Raspberry.getNumberArray("y", yNet);
        double[] w =  Raspberry.getNumberArray("width", wNet);
        double [] h =  Raspberry.getNumberArray("height", hNet);
        double test = Raspberry.getNumber("test", 5.0);
-      
+       double[] titties = Raspberry.getNumberArray("testies", tester);
+       
+       
+       SmartDashboard.putNumber("testies", titties[0]);
        SmartDashboard.putNumber("xNet", x[0]);
        SmartDashboard.putNumber("yNet", y[0]);
        SmartDashboard.putNumber("widthNet", w[0]);
        SmartDashboard.putNumber("heightNet", h[0]);
        SmartDashboard.putNumber("TEST", test);
        
+       	}
        
        
-       }
+       
+       
         
     
     
