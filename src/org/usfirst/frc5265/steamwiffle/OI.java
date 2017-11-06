@@ -107,11 +107,11 @@ public class OI {
     public Joystick getsteering() {
         return steering;
     }
-    public double getXSteer() {
-        return steering.getRawAxis(4); //look up what the actual axis number is
-    }
-    public double getYSteer() {
+    public double getForward() {
         return steering.getRawAxis(1); //look up what the actual axis number is
+    }
+    public double getSideways() {
+        return steering.getRawAxis(4); //look up what the actual axis number is
     }
     public double getTwistSteer() {
         return steering.getRawAxis(0); //look up what the actual axis number is
