@@ -2,6 +2,7 @@ package org.usfirst.frc5265.steamwiffle.commands;
 
 import org.usfirst.frc5265.steamwiffle.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -24,6 +25,7 @@ public class DriveByTime extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.chassis.driveChassisSteering(xx, yy);
+    	Timer.delay(.1);
     }
 
     // Called repeatedly when this Command is scheduled to run

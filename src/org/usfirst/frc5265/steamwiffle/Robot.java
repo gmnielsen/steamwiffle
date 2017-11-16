@@ -159,7 +159,7 @@ public class Robot extends IterativeRobot {
         //double distance = ultra.getValue();
         //SmartDashboard.putNumber("Distance", distance)
       
-     // while (isOperatorControl() && isEnabled()){ 
+      
        double[] x = Raspberry.getNumberArray("x", xNet);
        double[] y = Raspberry.getNumberArray("y", yNet);
        double[] w =  Raspberry.getNumberArray("width", wNet);
@@ -175,7 +175,7 @@ public class Robot extends IterativeRobot {
        SmartDashboard.putNumber("heightNet", h[0]);
        SmartDashboard.putNumber("TEST", testies);
        
-       //	}
+
        
        
        

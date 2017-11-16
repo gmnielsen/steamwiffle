@@ -1,12 +1,15 @@
 package org.usfirst.frc5265.steamwiffle.commands;
 
 import org.usfirst.frc5265.steamwiffle.Robot;
+import org.usfirst.frc5265.steamwiffle.RobotMap;
 import org.usfirst.frc5265.steamwiffle.subsystems.chassis;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.networktables.*;
+import org.usfirst.frc5265.steamwiffle.commands.DriveByTime;
 
 /**
  *
@@ -20,35 +23,50 @@ public class autoGo extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+		
+	double xNet[] = Robot.Raspberry.getNumberArray("x");
+	double time = Math.abs((xNet[0]-320)/10)/17;
+	SmartDashboard.putDouble("timeForTits", time);
+	double speed = .25;
+	
     	
+	Timer.delay(.1);	
+if(xNet[0]<340 && xNet[0] > 300){
+chassis.driveChassisSteering(0, 0);
+end();
+}else if(xNet[0]<300){
+    		SmartDashboard.putBoolean("right", true);
+    	 
+    		chassis.driveChassisSteering(0,-speed);
+    		Timer.delay(time);
+    		chassis.driveChassisSteering(0, 0);
+    		SmartDashboard.putBoolean("right", false);
+    		end();
+    			
+}else if(xNet[0]>340){
+    		SmartDashboard.putBoolean("Left", true);
+    		chassis.driveChassisSteering(0,speed);
+    		Timer.delay(time);
+    	//		DriveByTime(0, -1, 1, 1);
+    		chassis.driveChassisSteering(0, 0);
+    		end();	
+    		SmartDashboard.putBoolean("Left", false);
+    			
+    		}if(xNet[0]<340 && xNet[0] > 300){
+    		chassis.driveChassisSteering(0, 0);
+    		end();
+    		}
+    	}
     	
-    }
+    
+
+
+    	
+    
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		
-    	double xNet[] = Robot.Raspberry.getNumberArray("x");
-    		
-        	
-        	
-        		 
-        		 SmartDashboard.putNumber("new Xnet", xNet[0]);
-        		if(xNet[0]<300){
-        			chassis.driveChassisSteering(0,1);
-        			setTimeout(1);
-        			Robot.chassis.driveChassisSteering(0, 0);
-        		}
-        		if(xNet[0]>340){
-        			chassis.driveChassisSteering(0,-.5);
-        			setTimeout(1);
-        			Robot.chassis.driveChassisSteering(0, 0);
-        		}
-        		
-        	}
-        	
-        
-    
-
+    }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
