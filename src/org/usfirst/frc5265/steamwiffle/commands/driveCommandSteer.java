@@ -37,8 +37,10 @@ public class driveCommandSteer extends Command {
     	// load the variables from the joystick
     	x = Robot.oi.getForward();
     	y = Robot.oi.getSideways();
+
     	SmartDashboard.putDouble("forward", x);
     	SmartDashboard.putDouble("sideways", y);
+
     	t = 0.0;
     	throttle = Robot.oi.getThrottle();
     	//	minMotion = SmartDashboard.getNumber("minimumMotionJoystick", 0.0);

@@ -66,6 +66,7 @@ public class OI {
     public JoystickButton witch;
     public JoystickButton witch2;
     public JoystickButton ultra;
+    public JoystickButton autoGoTest;
     
 
     
@@ -81,6 +82,8 @@ public class OI {
         	plus90.whenPressed(new buttonplus90());
         minus90 = new JoystickButton(steering, 7);
         	minus90.whenPressed(new buttonminus90());
+        autoGoTest = new JoystickButton(steering, 1);
+        	autoGoTest.toggleWhenPressed(new autoGo());
        
         //witch2 = new JoystickButton(steering,6);
         	//witch2.toggleWhenPressed(new witchUp(-1.0));
@@ -108,11 +111,15 @@ public class OI {
         return steering;
     }
     public double getForward() {
+
         return steering.getRawAxis(1); //look up what the actual axis number is
+       
     }
     public double getSideways() {
         return steering.getRawAxis(4); //look up what the actual axis number is
+
     }
+   
     public double getTwistSteer() {
         return steering.getRawAxis(0); //look up what the actual axis number is
     }

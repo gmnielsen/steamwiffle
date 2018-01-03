@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
 	// necessary for autonomous
     Command autonomousCommand;
     SendableChooser <Command> autoChooser;
-    NetworkTable Raspberry;
+    public static NetworkTable Raspberry;
     //Ultrasonic space = new Ultrasonic(1,1);
     
     //public double [] xNet, yNet,wNet,hNet;
@@ -46,6 +46,7 @@ public class Robot extends IterativeRobot {
     double [] wNet = new double[10];
     double [] hNet = new double[10];
     double[] tester = new double[3];
+    double test = 0;
     //public AnalogInput ultra = new AnalogInput(0);
     
     // each subsystem must be declared
@@ -106,7 +107,9 @@ public class Robot extends IterativeRobot {
         
 
         autonomousCommand = new CenterAllianceAutonomous();
-
+        
+        SmartDashboard.putDouble("Timer Delay", .23);
+        SmartDashboard.putDouble("Power", .5);
    
 
     }
@@ -157,13 +160,13 @@ public class Robot extends IterativeRobot {
         
         //double distance = ultra.getValue();
         //SmartDashboard.putNumber("Distance", distance)
-       
-       while (isOperatorControl() && isEnabled()){ 
+      
+     // while (isOperatorControl() && isEnabled()){ 
        double[] x = Raspberry.getNumberArray("x", xNet);
        double[] y = Raspberry.getNumberArray("y", yNet);
        double[] w =  Raspberry.getNumberArray("width", wNet);
        double [] h =  Raspberry.getNumberArray("height", hNet);
-       double test = Raspberry.getNumber("test", 5.0);
+       double testies = Raspberry.getNumber("test", test);
        double[] titties = Raspberry.getNumberArray("testies", tester);
        
        
@@ -172,9 +175,9 @@ public class Robot extends IterativeRobot {
        SmartDashboard.putNumber("yNet", y[0]);
        SmartDashboard.putNumber("widthNet", w[0]);
        SmartDashboard.putNumber("heightNet", h[0]);
-       SmartDashboard.putNumber("TEST", test);
+       SmartDashboard.putNumber("TEST", testies);
        
-       	}
+       //	}
        
        
        
