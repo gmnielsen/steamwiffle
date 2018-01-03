@@ -58,8 +58,8 @@ public class RobotMap {
     //public static Compressor airCompressor1;
     //public static Solenoid airSolenoid1;
     //public static Relay airRelaySolenoid1;
-    //public static DoubleSolenoid airDoubleSolenoid1;
-    //public static Servo pIDSubsystem1Servo1;
+    public static DoubleSolenoid airDoubleSolenoid1 = new DoubleSolenoid(1,2);
+    	
     //public static Servo pIDSubsystem1Servo2;
     //public static AnalogPotentiometer pIDSubsystem1AnalogPotentiometer1;
     //public static Solenoid pIDSubsystem1Solenoid1;
@@ -126,6 +126,8 @@ public class RobotMap {
         gearUltrasonic1 = new Ultrasonic(0, 1);
         LiveWindow.addSensor("gear", "Ultrasonic 1", gearUltrasonic1);
         
+        airDoubleSolenoid1.set(DoubleSolenoid.Value.kOff);
+        //public static Servo pIDSubsystem1Servo1;
         //airCompressor1 = new Compressor(0);
         
         //airSolenoid1 = new Solenoid(0, 0);

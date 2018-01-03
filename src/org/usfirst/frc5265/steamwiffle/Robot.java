@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.networktables.*;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 import org.usfirst.frc5265.steamwiffle.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -54,7 +55,8 @@ public class Robot extends IterativeRobot {
     public static chassis chassis;
 
     public static stagValues stagValues;
-
+    
+    
     //public static ultraBooty ultrab;
     /**
      * This function is run when the robot is first started up and should be
