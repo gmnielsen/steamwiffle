@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.networktables.*;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 import org.usfirst.frc5265.steamwiffle.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -38,7 +39,7 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     SendableChooser <Command> autoChooser;
     public static NetworkTable Raspberry;
-    //Ultrasonic space = new Ultrasonic(1,1);
+    public static AnalogInput ultrasonic = new AnalogInput(0);
     
     //public double [] xNet, yNet,wNet,hNet;
     double [] xNet = new double[10];
@@ -54,7 +55,8 @@ public class Robot extends IterativeRobot {
     public static chassis chassis;
 
     public static stagValues stagValues;
-
+    
+    
     //public static ultraBooty ultrab;
     /**
      * This function is run when the robot is first started up and should be
@@ -63,8 +65,13 @@ public class Robot extends IterativeRobot {
     
     public Robot() {
     	Raspberry = NetworkTable.getTable("Raspberry");
+    	
     }
-    
+    public static double ultra(){
+    	
+    	return ultrasonic.getValue() *.125;
+    	
+    }
     
     
     public void robotInit() {
@@ -161,7 +168,7 @@ public class Robot extends IterativeRobot {
         //double distance = ultra.getValue();
         //SmartDashboard.putNumber("Distance", distance)
       
-     // while (isOperatorControl() && isEnabled()){ 
+      
        double[] x = Raspberry.getNumberArray("x", xNet);
        double[] y = Raspberry.getNumberArray("y", yNet);
        double[] w =  Raspberry.getNumberArray("width", wNet);
@@ -177,7 +184,7 @@ public class Robot extends IterativeRobot {
        SmartDashboard.putNumber("heightNet", h[0]);
        SmartDashboard.putNumber("TEST", testies);
        
-       //	}
+
        
        
        

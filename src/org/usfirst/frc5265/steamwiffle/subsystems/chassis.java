@@ -74,10 +74,15 @@ public class chassis extends Subsystem {
     	
     	if(x_speed < -0.1 || x_speed > 0.1){
 
+
         	FL =  -x_speed;
         	FR =  x_speed;
         	RL = -x_speed;
         	RR = x_speed;
+
+        	
+        	
+
     		
     	}else{
     		FL = y_speed;

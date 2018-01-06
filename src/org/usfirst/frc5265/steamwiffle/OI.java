@@ -112,12 +112,14 @@ public class OI {
     }
     public double getForward() {
 
+
         return steering.getRawAxis(1); //look up what the actual axis number is
        
+
+
     }
     public double getSideways() {
-        return steering.getRawAxis(4); //look up what the actual axis number is
-
+    return steering.getRawAxis(4); //look up what the actual axis number is
     }
    
     public double getTwistSteer() {
