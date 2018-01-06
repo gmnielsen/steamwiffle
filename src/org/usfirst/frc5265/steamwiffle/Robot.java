@@ -39,7 +39,7 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     SendableChooser <Command> autoChooser;
     public static NetworkTable Raspberry;
-    public static AnalogInput ultrasonic = new AnalogInput(0);
+    //public static AnalogInput ultrasonic = new AnalogInput(0);
     
     //public double [] xNet, yNet,wNet,hNet;
     double [] xNet = new double[10];
@@ -67,13 +67,15 @@ public class Robot extends IterativeRobot {
     	Raspberry = NetworkTable.getTable("Raspberry");
     	
     }
+  /*
     public static double ultra(){
+    	
     	
     	return ultrasonic.getValue() *.125;
     	
     }
     
-    
+    */
     public void robotInit() {
     	// start the RobotMap subsystem
     	RobotMap.init();

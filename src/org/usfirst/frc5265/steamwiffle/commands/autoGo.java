@@ -26,7 +26,7 @@ public class autoGo extends Command {
     protected void initialize() {
     	
     boolean on = Robot.Raspberry.putBoolean("isOn", true);	
-    double dist = Robot.ultra();
+    //double dist = Robot.ultra();
 		
 	double xNet[] = Robot.Raspberry.getNumberArray("x");
 	double time = Math.abs((xNet[0]-320)/10)/17;
