@@ -36,7 +36,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 	// necessary for autonomous
-    Command autonomousCommand;
+	// test lines for committing
+	//autoGo();
+	Command autonomousCommand;
     SendableChooser <Command> autoChooser;
     public static NetworkTable Raspberry;
     //public static AnalogInput ultrasonic = new AnalogInput(0);
@@ -48,7 +50,7 @@ public class Robot extends IterativeRobot {
     double [] hNet = new double[10];
     double[] tester = new double[3];
     double test = 0;
-    //public AnalogInput ultra = new AnalogInput(0);
+    
     
     // each subsystem must be declared
     public static OI oi;
@@ -74,8 +76,8 @@ public class Robot extends IterativeRobot {
     	return ultrasonic.getValue() *.125;
     	
     }
-    
     */
+   
     public void robotInit() {
     	// start the RobotMap subsystem
     	RobotMap.init();
