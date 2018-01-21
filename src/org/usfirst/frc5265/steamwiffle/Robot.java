@@ -37,11 +37,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
-	
+	AnalogPotentiometer pot;
 	Command autonomousCommand;
     SendableChooser <Command> autoChooser;
     public static NetworkTable Raspberry;
     //public static AnalogInput ultrasonic = new AnalogInput(0);
+    
+    
     
     
     //public double [] xNet, yNet,wNet,hNet;
@@ -106,7 +108,8 @@ public class Robot extends IterativeRobot {
         
         SmartDashboard.putDouble("Timer Delay", .23);
         SmartDashboard.putDouble("Power", .5);
-   
+        
+        
 
     }
 
@@ -156,7 +159,8 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         
-        
+        pot = new AnalogPotentiometer(0,360,30);
+        double degrees = pot.get();   
         
         //double distance = ultra.getValue();
         //SmartDashboard.putNumber("Distance", distance)

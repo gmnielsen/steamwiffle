@@ -93,7 +93,7 @@ public class RobotMap {
         //chassismover.setExpiration(0.1);
         //chassismover.setSensitivity(0.5);
         //chassismover.setMaxOutput(1.0);
-
+        /*
         chassisAnalogGyro1 = new AnalogGyro(0);
         LiveWindow.addSensor("chassis", "AnalogGyro 1", chassisAnalogGyro1);
         chassisAnalogGyro1.setSensitivity(0.007);
@@ -104,7 +104,7 @@ public class RobotMap {
         LiveWindow.addSensor("chassis", "AnalogAccelerometer 1", chassisAnalogAccelerometer1);
         chassisAnalogAccelerometer1.setSensitivity(0.0);
         chassisAnalogAccelerometer1.setZero(2.5);
-        
+        */
         fuelspinnies = new Victor(4);
         LiveWindow.addActuator("fuel", "spinnies", (Victor) fuelspinnies);
         
@@ -120,11 +120,11 @@ public class RobotMap {
         witch = new Victor (6);
         LiveWindow.addActuator("witch", "witch motor", (Victor) witch);
        
-        fuelLimitSwitch1 = new DigitalInput(2);
-        LiveWindow.addSensor("fuel", "Limit Switch 1", fuelLimitSwitch1);
+        //fuelLimitSwitch1 = new DigitalInput(2);
+        //LiveWindow.addSensor("fuel", "Limit Switch 1", fuelLimitSwitch1);
         
-        gearUltrasonic1 = new Ultrasonic(0, 1);
-        LiveWindow.addSensor("gear", "Ultrasonic 1", gearUltrasonic1);
+        //gearUltrasonic1 = new Ultrasonic(0, 1);
+        //LiveWindow.addSensor("gear", "Ultrasonic 1", gearUltrasonic1);
         
         airDoubleSolenoid1.set(DoubleSolenoid.Value.kOff);
         //public static Servo pIDSubsystem1Servo1;
