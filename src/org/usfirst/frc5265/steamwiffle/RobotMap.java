@@ -45,26 +45,19 @@ public class RobotMap {
     public static SpeedController chassisSpeedController3; // Rear Left
     public static SpeedController shooterMotor;
     public static RobotDrive chassismover;
-    public static AnalogGyro chassisAnalogGyro1;
+    
     public static PowerDistributionPanel chassisPowerDistributionPanel1;
-    public static AnalogAccelerometer chassisAnalogAccelerometer1;
+    
     public static SpeedController fuelspinnies;
     public static SpeedController agitator;
     public static SpeedController brush;
     public static SpeedController witch;
     public static DigitalInput fuelLimitSwitch1;
     public static Ultrasonic gearUltrasonic1;
-    //public static Solenoid gearSolenoid1;
-    //public static Compressor airCompressor1;
-    //public static Solenoid airSolenoid1;
-    //public static Relay airRelaySolenoid1;
+    
     public static DoubleSolenoid airDoubleSolenoid1 = new DoubleSolenoid(1,2);
     	
-    //public static Servo pIDSubsystem1Servo2;
-    //public static AnalogPotentiometer pIDSubsystem1AnalogPotentiometer1;
-    //public static Solenoid pIDSubsystem1Solenoid1;
-    //public static SpeedController pIDSubsystem1SpeedController1;
-
+   
     
     public static void init() {
         // declare our Victors, in a clockwise direction across the front and then the back,
