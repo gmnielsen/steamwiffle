@@ -78,13 +78,11 @@ public class OI {
         // construct each button and what happens when it is used
         //click01 = new JoystickButton(steering, 1);
         	//click01.whileHeld(new dothis01());
-        plus90 = new JoystickButton(steering, 8);
-        	plus90.whenPressed(new buttonplus90());
-        minus90 = new JoystickButton(steering, 7);
-        	minus90.whenPressed(new buttonminus90());
+       
+        	
         autoGoTest = new JoystickButton(steering, 1);
         	autoGoTest.toggleWhenPressed(new autoGo());
-       
+        			
         //witch2 = new JoystickButton(steering,6);
         	//witch2.toggleWhenPressed(new witchUp(-1.0));
         //ultra = new JoystickButton(steering, 11);
@@ -137,6 +135,9 @@ public class OI {
     public double getThrottle() {
     	return steering.getThrottle();
     }
-    
+    public double getPOV(){
+    	return steering.getPOV();
+    	
+    }
 }
 

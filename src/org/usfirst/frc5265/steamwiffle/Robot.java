@@ -37,7 +37,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
-	AnalogPotentiometer pot;
+	
 	Command autonomousCommand;
     SendableChooser <Command> autoChooser;
     public static NetworkTable Raspberry;
@@ -61,8 +61,8 @@ public class Robot extends IterativeRobot {
 
     public static stagValues stagValues;
     
+    public static brushPot brushPot;
     
-    //public static ultraBooty ultrab;
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -70,7 +70,6 @@ public class Robot extends IterativeRobot {
     
     public Robot() {
     	Raspberry = NetworkTable.getTable("Raspberry");
-    	
     	
     }
  
@@ -159,8 +158,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         
-        pot = new AnalogPotentiometer(0,360,30);
-        double degrees = pot.get();   
+        double degrees = RobotMap.pot.get();
         
         //double distance = ultra.getValue();
         //SmartDashboard.putNumber("Distance", distance)
@@ -181,12 +179,23 @@ public class Robot extends IterativeRobot {
        SmartDashboard.putNumber("heightNet", h[0]);
        SmartDashboard.putNumber("TEST", testies);
        
+       SmartDashboard.putNumber("analpot", degrees);
 
+       double POV = oi.getPOV();
+       SmartDashboard.putNumber("pov", POV);
+       
+       if(POV==0){
+    	   brushPot = new brushPot(0);
+    	   
+       }else if(POV==90){
+    	   brushPot = new brushPot(1);
+    	   
+       }else if(POV==180){
+    	   brushPot = new brushPot(2);
+    	   
+       }
        
        
-       
-       
-        
     
     
     }

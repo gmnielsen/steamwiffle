@@ -45,12 +45,12 @@ public class RobotMap {
     public static SpeedController chassisSpeedController3; // Rear Left
     public static SpeedController shooterMotor;
     public static RobotDrive chassismover;
-    
+    public static AnalogPotentiometer pot;
     public static PowerDistributionPanel chassisPowerDistributionPanel1;
     
     public static SpeedController fuelspinnies;
     public static SpeedController agitator;
-    public static SpeedController brush;
+    public static SpeedController brushless;
     public static SpeedController witch;
     public static DigitalInput fuelLimitSwitch1;
     public static Ultrasonic gearUltrasonic1;
@@ -77,6 +77,10 @@ public class RobotMap {
         
         chassisSpeedController3 = new Victor(3); // Rear Left
         LiveWindow.addActuator("chassis", "Speed Controller 3", (Victor) chassisSpeedController3);
+       
+        
+        pot = new AnalogPotentiometer(3);
+        LiveWindow.addSensor("chassis", "analpot", (AnalogPotentiometer) pot);
         
         // REMOVED - RobotDrive gives errors and lots of lost packets
         //chassismover = new RobotDrive(chassisSpeedController0, chassisSpeedController1,
@@ -98,7 +102,7 @@ public class RobotMap {
         chassisAnalogAccelerometer1.setSensitivity(0.0);
         chassisAnalogAccelerometer1.setZero(2.5);
         */
-        fuelspinnies = new Victor(4);
+        fuelspinnies = new Victor(8);
         LiveWindow.addActuator("fuel", "spinnies", (Victor) fuelspinnies);
         
         shooterMotor = new Victor(5);
@@ -107,8 +111,8 @@ public class RobotMap {
         agitator = new Victor(7);
         LiveWindow.addActuator("agitate", "agitate motor", (Victor) agitator);
         
-        brush = new Victor (8);
-        LiveWindow.addActuator("brush", "brush motor", (Victor) brush);
+        brushless = new Victor (4);
+        LiveWindow.addActuator("brush", "brush motor", (Victor) brushless);
         
         witch = new Victor (6);
         LiveWindow.addActuator("witch", "witch motor", (Victor) witch);

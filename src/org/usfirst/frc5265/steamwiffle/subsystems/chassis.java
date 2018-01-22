@@ -36,6 +36,7 @@ public class chassis extends Subsystem {
     private final static SpeedController speedController2 = RobotMap.chassisSpeedController2; // Rear Right
     private final static SpeedController speedController3 = RobotMap.chassisSpeedController3; // Rear Left
     private final RobotDrive mover = RobotMap.chassismover;
+    public final static SpeedController brushless = RobotMap.brushless;
     //private final AnalogGyro analogGyro1 = RobotMap.chassisAnalogGyro1;
     private final PowerDistributionPanel powerDistributionPanel1 = RobotMap.chassisPowerDistributionPanel1;
     //private final AnalogAccelerometer analogAccelerometer1 = RobotMap.chassisAnalogAccelerometer1;
@@ -64,7 +65,10 @@ public class chassis extends Subsystem {
         speedController3.set(speed);
         SmartDashboard.putNumber("RearRight", speed);
     }
-   
+    public static void brushless(double speed) {
+        brushless.set(speed);
+        
+    }
     
     // main driving program, using simple addition to get the robot moving in the appropriate direction
    
