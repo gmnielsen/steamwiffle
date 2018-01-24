@@ -54,7 +54,7 @@ public class RobotMap {
     public static SpeedController witch;
     public static DigitalInput fuelLimitSwitch1;
     public static Ultrasonic gearUltrasonic1;
-    
+    public static Servo servme;
     public static DoubleSolenoid airDoubleSolenoid1 = new DoubleSolenoid(1,2);
     	
    
@@ -81,6 +81,9 @@ public class RobotMap {
         
         pot = new AnalogPotentiometer(3);
         LiveWindow.addSensor("chassis", "analpot", (AnalogPotentiometer) pot);
+        
+        servme = new Servo(9);
+        LiveWindow.addActuator("Servo", 9, (Servo) servme);
         
         // REMOVED - RobotDrive gives errors and lots of lost packets
         //chassismover = new RobotDrive(chassisSpeedController0, chassisSpeedController1,

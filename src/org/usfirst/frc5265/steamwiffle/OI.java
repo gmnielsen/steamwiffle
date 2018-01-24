@@ -65,9 +65,9 @@ public class OI {
     public JoystickButton agitate;
     public JoystickButton witch;
     public JoystickButton witch2;
-    public JoystickButton ultra;
+    public JoystickButton brush;
     public JoystickButton autoGoTest;
-    
+    public JoystickButton servoTest;
 
     
     public OI() {
@@ -79,7 +79,9 @@ public class OI {
         //click01 = new JoystickButton(steering, 1);
         	//click01.whileHeld(new dothis01());
        
-        	
+       		
+        servoTest = new JoystickButton(steering,2);
+        	servoTest.whenPressed(new servoTest());
         autoGoTest = new JoystickButton(steering, 1);
         	autoGoTest.toggleWhenPressed(new autoGo());
         			
@@ -133,7 +135,7 @@ public class OI {
     	return steering.getMagnitude();	
     }
     public double getThrottle() {
-    	return steering.getThrottle();
+    	return steering.getThrottle()-.99;
     }
     public double getPOV(){
     	return steering.getPOV();
