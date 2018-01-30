@@ -68,6 +68,9 @@ public class OI {
     public JoystickButton brush;
     public JoystickButton autoGoTest;
     public JoystickButton servoTest;
+    public JoystickButton solTest;
+    public JoystickButton liftup;
+    public JoystickButton liftdown;
 
     
     public OI() {
@@ -79,11 +82,17 @@ public class OI {
         //click01 = new JoystickButton(steering, 1);
         	//click01.whileHeld(new dothis01());
        
-       		
-        servoTest = new JoystickButton(steering,2);
+       	solTest = new JoystickButton(steering,2);
+       		solTest.toggleWhenPressed(new SolTest());
+        servoTest = new JoystickButton(steering,3);
         	servoTest.whenPressed(new servoTest());
         autoGoTest = new JoystickButton(steering, 1);
         	autoGoTest.toggleWhenPressed(new autoGo());
+        	
+        liftup = new JoystickButton(steering, 5);
+        	liftup.whileHeld(new LiftUp());
+        liftdown = new JoystickButton(steering, 6);
+        	liftdown.whileHeld(new LiftDown());
         			
         //witch2 = new JoystickButton(steering,6);
         	//witch2.toggleWhenPressed(new witchUp(-1.0));
