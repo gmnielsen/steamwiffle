@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj.networktables.*;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DriverStation;
 
 import org.usfirst.frc5265.steamwiffle.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -42,7 +43,7 @@ public class Robot extends IterativeRobot {
     SendableChooser <Command> autoChooser;
     public static NetworkTable Raspberry;
     //public static AnalogInput ultrasonic = new AnalogInput(0);
-    
+    String gameData;
     
     
     
@@ -105,8 +106,8 @@ public class Robot extends IterativeRobot {
 
         autonomousCommand = new CenterAllianceAutonomous();
         
-        SmartDashboard.putDouble("Timer Delay", .23);
-        SmartDashboard.putDouble("Power", .5);
+        SmartDashboard.putNumber("Timer Delay", .23);
+        SmartDashboard.putNumber("Power", .5);
         
         
 
@@ -129,6 +130,16 @@ public class Robot extends IterativeRobot {
         // schedule the autonomous command (example)
 
     	autonomousCommand = autoChooser.getSelected();
+    	
+    	gameData = DriverStation.getInstance().getGameSpecificMessage();
+    	
+    	if(gameData.charAt(0) == 'R'){
+    		//right side
+    		
+    	} else{
+    		//left side
+    		
+    	}
 
         if (autonomousCommand != null) autonomousCommand.start();
         }

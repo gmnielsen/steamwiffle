@@ -43,7 +43,7 @@ public class driveCommandVideo extends Command {
     	//the tester
     	if(voltage < 7.5){
     		f = .75;
-    		SmartDashboard.putDouble("f", f);
+    		SmartDashboard.putNumber("f", f);
     	}
     	else{
     		f = 1.0;
@@ -51,7 +51,7 @@ public class driveCommandVideo extends Command {
     	// Incorporating throttle 
     	throttle = ((-throttle + 1)/2);
     	throttle = (throttle * f);
-    	SmartDashboard.putDouble("throttle", throttle);
+    	SmartDashboard.putNumber("throttle", throttle);
         	// x modification
     	if (Math.abs(x) <= minMotion) { // x can be both positive and negative
     		x = 0;

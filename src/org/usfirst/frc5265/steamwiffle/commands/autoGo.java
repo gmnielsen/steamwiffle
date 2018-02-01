@@ -15,6 +15,7 @@ import org.usfirst.frc5265.steamwiffle.commands.DriveByTime;
  *
  */
 public class autoGo extends Command {
+	double[] xEmpty = new double[3];
 	//NetworkTable Raspberry;
     public autoGo() {
         // Use requires() here to declare subsystem dependencies
@@ -28,9 +29,9 @@ public class autoGo extends Command {
     boolean on = Robot.Raspberry.putBoolean("isOn", true);	
     //double dist = Robot.ultra();
 		
-	double xNet[] = Robot.Raspberry.getNumberArray("x");
+	double xNet[] = Robot.Raspberry.getNumberArray("x", xEmpty);
 	double time = Math.abs((xNet[0]-320)/10)/17;
-	SmartDashboard.putDouble("timeForTits", time);
+	SmartDashboard.putNumber("timeForTits", time);
 	double speed = .25;
 	
     	

@@ -55,7 +55,7 @@ public class RobotMap {
     public static DigitalInput fuelLimitSwitch1;
     public static Ultrasonic gearUltrasonic1;
     public static Servo servme;
-    public static DoubleSolenoid airDoubleSolenoid1 = new DoubleSolenoid(1,2);
+    public static DoubleSolenoid airDoubleSolenoid1 = new DoubleSolenoid(0,1);
     	
    
     
