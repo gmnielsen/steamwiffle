@@ -1,5 +1,5 @@
 package org.usfirst.frc5265.steamwiffle.commands;
-
+/*
 import org.usfirst.frc5265.steamwiffle.Robot;
 import org.usfirst.frc5265.steamwiffle.RobotMap;
 import org.usfirst.frc5265.steamwiffle.subsystems.chassis;
@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.networktables.*;
 import org.usfirst.frc5265.steamwiffle.commands.DriveByTime;
-
+*/
 /**
  *
- */
+ 
 public class autoGo extends Command {
 	double[] xEmpty = new double[3];
 	//NetworkTable Raspberry;
@@ -88,3 +88,4 @@ end();
     protected void interrupted() {
     }
 }
+*/

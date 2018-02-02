@@ -42,11 +42,11 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
     SendableChooser <Command> autoChooser;
     public static NetworkTable Raspberry;
-    //public static AnalogInput ultrasonic = new AnalogInput(0);
+    
     String gameData;
     
     
-    
+    /*
     //public double [] xNet, yNet,wNet,hNet;
     double [] xNet = new double[10];
     double [] yNet = new double[10];
@@ -55,7 +55,7 @@ public class Robot extends IterativeRobot {
     double[] tester = new double[3];
     double test = 0;
     
-    
+    */
     // each subsystem must be declared
     public static OI oi;
     public static chassis chassis;
@@ -173,7 +173,7 @@ public class Robot extends IterativeRobot {
         
         //double distance = ultra.getValue();
         //SmartDashboard.putNumber("Distance", distance)
-      
+      /*
       
        double[] x = Raspberry.getNumberArray("x", xNet);
        double[] y = Raspberry.getNumberArray("y", yNet);
@@ -207,7 +207,7 @@ public class Robot extends IterativeRobot {
        }
        
        
-    
+    */
     
     }
 

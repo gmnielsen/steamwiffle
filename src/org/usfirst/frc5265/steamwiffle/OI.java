@@ -54,19 +54,11 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 
 	// each button must be declared
-    public JoystickButton click01;
+    ;
     public Joystick steering;
-    public JoystickButton plus90;
-    public JoystickButton minus90;
-    public JoystickButton turnme45;
-    public JoystickButton shootByTime;
-    public JoystickButton shoot;
-    public JoystickButton intake;
-    public JoystickButton agitate;
-    public JoystickButton witch;
-    public JoystickButton witch2;
+    
     public JoystickButton brush;
-    public JoystickButton autoGoTest;
+    
     public JoystickButton servoTest;
     public JoystickButton solTest;
     public JoystickButton liftup;
@@ -86,8 +78,7 @@ public class OI {
        		solTest.toggleWhenPressed(new SolTest());
         servoTest = new JoystickButton(steering,3);
         	servoTest.whenPressed(new servoTest());
-        autoGoTest = new JoystickButton(steering, 1);
-        	autoGoTest.toggleWhenPressed(new autoGo());
+        
         	
         liftup = new JoystickButton(steering, 5);
         	liftup.whileHeld(new LiftUp());
