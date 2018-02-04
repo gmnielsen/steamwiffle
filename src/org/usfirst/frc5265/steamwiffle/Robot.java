@@ -170,9 +170,9 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         
         double degrees = RobotMap.pot.get();
+        SmartDashboard.putNumber("pot", degrees);
+       
         
-        //double distance = ultra.getValue();
-        //SmartDashboard.putNumber("Distance", distance)
       /*
       
        double[] x = Raspberry.getNumberArray("x", xNet);

@@ -58,7 +58,8 @@ public class OI {
     public Joystick steering;
     
     public JoystickButton brush;
-    
+    public JoystickButton armup;
+    public JoystickButton armdown;
     public JoystickButton servoTest;
     public JoystickButton solTest;
     public JoystickButton liftup;
@@ -74,32 +75,23 @@ public class OI {
         //click01 = new JoystickButton(steering, 1);
         	//click01.whileHeld(new dothis01());
        
-       	solTest = new JoystickButton(steering,2);
+       	solTest = new JoystickButton(steering,4);
        		solTest.toggleWhenPressed(new SolTest());
-        servoTest = new JoystickButton(steering,3);
-        	servoTest.whenPressed(new servoTest());
-        
-        	
+        //servoTest = new JoystickButton(steering,3);
+        	//servoTest.whenPressed(new servoTest());
+        //armup = new JoystickButton(steering,1);
+        	//armup.whenPressed(new armUp());
+        armdown = new JoystickButton(steering,2);
+        	armdown.whenPressed(new armDown());
         liftup = new JoystickButton(steering, 5);
         	liftup.whileHeld(new LiftUp());
         liftdown = new JoystickButton(steering, 6);
         	liftdown.whileHeld(new LiftDown());
         			
-        //witch2 = new JoystickButton(steering,6);
-        	//witch2.toggleWhenPressed(new witchUp(-1.0));
-        //ultra = new JoystickButton(steering, 11);
-        	//ultra.toggleWhenPressed(new BootySteering());
+       
         
 
-        // SmartDashboard Buttons, if we need them, go here
-
-        //SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
-        //SmartDashboard.putData("dothis01", new dothis01());
-        //SmartDashboard.putData("Setpoint Command 1", new SetpointCommand1());
-        //SmartDashboard.putData("Timed Command 1", new TimedCommand1());
-        //SmartDashboard.putData("Instant Command 1", new InstantCommand1());
-        //SmartDashboard.putData("Command Group 1", new CommandGroup1());
-        //SmartDashboard.putData("PID Command 1", new PIDCommand1());
+       
         
 
 

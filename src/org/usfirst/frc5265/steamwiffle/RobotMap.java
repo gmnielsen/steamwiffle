@@ -15,16 +15,12 @@ package org.usfirst.frc5265.steamwiffle;
 import edu.wpi.first.wpilibj.AnalogAccelerometer;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
-import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
-import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.Victor;
 
@@ -43,12 +39,12 @@ public class RobotMap {
     public static SpeedController chassisSpeedController1; // Front Right
     public static SpeedController chassisSpeedController2; // Rear Right
     public static SpeedController chassisSpeedController3; // Rear Left
-    public static SpeedController shooterMotor;
-    
+    public static SpeedController armMotor;
+    public static AnalogPotentiometer poot;
     public static AnalogPotentiometer pot;
     public static PowerDistributionPanel chassisPowerDistributionPanel1;
-    
-    
+    public static DigitalInput limiterTop;
+    public static DigitalInput limiterBottom;
     public static SpeedController brushless;
    
     public static DigitalInput fuelLimitSwitch1;
@@ -81,9 +77,19 @@ public class RobotMap {
         pot = new AnalogPotentiometer(3);
         LiveWindow.addSensor("chassis", "analpot", (AnalogPotentiometer) pot);
         
+        //poot = new AnalogPotentiometer(2);
+        //LiveWindow.addSensor("chassis", "analpooot", (AnalogPotentiometer) poot);
+        
         servme = new Servo(9);
         LiveWindow.addActuator("Servo", 9, (Servo) servme);
         
+        limiterTop = new DigitalInput(5);
+        LiveWindow.addActuator("limiterUP",5 , (DigitalInput) limiterTop);
+     
+        
+        limiterBottom = new DigitalInput(6);
+        LiveWindow.addActuator("limiterDOWN",6 , (DigitalInput) limiterBottom);
+     
        /*
         chassisAnalogGyro1 = new AnalogGyro(0);
         LiveWindow.addSensor("chassis", "AnalogGyro 1", chassisAnalogGyro1);
@@ -104,6 +110,8 @@ public class RobotMap {
         brushless = new Victor (4);
         LiveWindow.addActuator("brush", "brush motor", (Victor) brushless);
         
+        armMotor = new Victor(5);
+        LiveWindow.addActuator("arm", "arm motor", (Victor) armMotor);
         
        
         
