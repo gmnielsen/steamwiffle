@@ -2,6 +2,7 @@ package org.usfirst.frc5265.steamwiffle.commands;
 
 import org.usfirst.frc5265.steamwiffle.Robot;
 import org.usfirst.frc5265.steamwiffle.RobotMap;
+import org.usfirst.frc5265.steamwiffle.subsystems.chassis;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -29,25 +30,25 @@ int angle;
     	if(angle == 0){
         	while(RobotMap.pot.get()<.2 || RobotMap.pot.get()>.25){
         		if(RobotMap.pot.get()<.2){
-        			Robot.chassis.brushless(.3);
-        		}else Robot.chassis.brushless(-.3);
+        			RobotMap.brushless.set(.3);
+        		}else chassis.brushless(-.3);
         		
         	}
         	end();
         }else if (angle ==1){
         	while(RobotMap.pot.get()<.6 || RobotMap.pot.get()>.7){
         		if(RobotMap.pot.get()<.6){
-        			Robot.chassis.brushless(.3);
-        		}else Robot.chassis.brushless(-.3);
+        			chassis.brushless(.3);
+        		}else chassis.brushless(-.3);
         		
         	}
         	end();
         }else if(angle ==2){
         	while(RobotMap.pot.get()<.8 || RobotMap.pot.get()>.85){
         		if(RobotMap.pot.get()<.8){
-        			Robot.chassis.brushless(.3);
+        			chassis.brushless(.3);
         		
-        		}else Robot.chassis.brushless(-.3);
+        		}else chassis.brushless(-.3);
         		
         	}
         	end();
@@ -61,7 +62,7 @@ int angle;
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.chassis.brushless(0);
+    	chassis.brushless(0);
     }
 
     // Called when another command which requires one or more of the same

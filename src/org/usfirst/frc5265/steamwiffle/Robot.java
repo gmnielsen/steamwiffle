@@ -14,21 +14,13 @@ package org.usfirst.frc5265.steamwiffle;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.interfaces.Potentiometer;
-import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.networktables.*;
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
-
 import org.usfirst.frc5265.steamwiffle.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import org.usfirst.frc5265.steamwiffle.subsystems.*;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -41,7 +33,7 @@ public class Robot extends IterativeRobot {
 	
 	Command autonomousCommand;
     SendableChooser <Command> autoChooser;
-    public static NetworkTable Raspberry;
+    //public static NetworkTable Raspberry;
     
     String gameData;
     
@@ -62,7 +54,7 @@ public class Robot extends IterativeRobot {
 
     public static stagValues stagValues;
     
-    public static brushPot brushPot;
+  
     
     /**
      * This function is run when the robot is first started up and should be
@@ -70,7 +62,7 @@ public class Robot extends IterativeRobot {
      */
     
     public Robot() {
-    	Raspberry = NetworkTable.getTable("Raspberry");
+    	//Raspberry = NetworkTable.getTable("Raspberry");
     	
     }
  
@@ -106,8 +98,7 @@ public class Robot extends IterativeRobot {
 
         autonomousCommand = new CenterAllianceAutonomous();
         
-        SmartDashboard.putNumber("Timer Delay", .23);
-        SmartDashboard.putNumber("Power", .5);
+       
         
         
 

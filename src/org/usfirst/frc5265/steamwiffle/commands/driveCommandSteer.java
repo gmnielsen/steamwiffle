@@ -3,8 +3,8 @@ package org.usfirst.frc5265.steamwiffle.commands;
 import org.usfirst.frc5265.steamwiffle.Robot;
 import org.usfirst.frc5265.steamwiffle.subsystems.*;
 
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.Timer;
+
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -19,6 +19,7 @@ public class driveCommandSteer extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassis);
+    	
     }
 
     // Called just before this Command runs the first time
@@ -29,8 +30,8 @@ public class driveCommandSteer extends Command {
     protected void execute() {
 
     	
-    	double f = 1.0;
-    	double voltage = DriverStation.getInstance().getBatteryVoltage();
+    	
+    	
     	// variables for the raw data from the joystick
     	double x, y, t, throttle, minMotion;
     	
@@ -38,9 +39,7 @@ public class driveCommandSteer extends Command {
     	x = Robot.oi.getForward();
     	y = Robot.oi.getSideways();
 
-    	SmartDashboard.putNumber("forward", x);
-    	SmartDashboard.putNumber("sideways", y);
-
+    	
     	t = 0.0;
     	throttle = Robot.oi.getThrottle();
     	//	minMotion = SmartDashboard.getNumber("minimumMotionJoystick", 0.0);
@@ -50,16 +49,10 @@ public class driveCommandSteer extends Command {
     	// if we want to modify these variables, wgge modify them here
     	
     	//the tester
-    	if(voltage < 7.5){
-    		f = .75;
-    		SmartDashboard.putNumber("f", f);
-    	}
-    	else{
-    		f = 1.0;
-    	}
+    	
     	// Incorporating throttle 
     	throttle = ((-throttle + 1)/2);
-    	throttle = (throttle * f);
+    	
     	SmartDashboard.putNumber("throttle", throttle);
         	// x modification
     	if (Math.abs(x) <= minMotion) { // x can be both positive and negative
@@ -101,7 +94,7 @@ public class driveCommandSteer extends Command {
     	
     	    	
     	// steer using those variables
-    	Robot.chassis.driveChassisSteering(x, y);
+    	chassis.driveChassisSteering(x, y);
     	
     }
 

@@ -1,6 +1,7 @@
 package org.usfirst.frc5265.steamwiffle.commands;
 
 import org.usfirst.frc5265.steamwiffle.Robot;
+import org.usfirst.frc5265.steamwiffle.subsystems.chassis;
 import org.usfirst.frc5265.steamwiffle.subsystems.stagValues;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -24,8 +25,7 @@ public class driveCommandVideo extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 
-    	double f = 1.0;
-    	double voltage = DriverStation.getInstance().getBatteryVoltage();
+    	
     	// variables for the raw data from the joystick
     	double x, y, t, throttle, minMotion;
     	
@@ -40,17 +40,11 @@ public class driveCommandVideo extends Command {
     	
     	// if we want to modify these variables, wgge modify them here
     	
-    	//the tester
-    	if(voltage < 7.5){
-    		f = .75;
-    		SmartDashboard.putNumber("f", f);
-    	}
-    	else{
-    		f = 1.0;
-    	}
+    	
+    	
     	// Incorporating throttle 
     	throttle = ((-throttle + 1)/2);
-    	throttle = (throttle * f);
+ 
     	SmartDashboard.putNumber("throttle", throttle);
         	// x modification
     	if (Math.abs(x) <= minMotion) { // x can be both positive and negative
@@ -92,7 +86,7 @@ public class driveCommandVideo extends Command {
     	
     	    	
     	// steer using those variables
-    	Robot.chassis.driveChassisSteering(x, y);
+    	chassis.driveChassisSteering(x, y);
     	
     
     }
