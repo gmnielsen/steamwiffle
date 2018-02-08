@@ -8,12 +8,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class SolTest extends Command {
+public class solClose extends Command {
 
-    public SolTest() {
+    public solClose() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +21,7 @@ public class SolTest extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.airDoubleSolenoid1.set(DoubleSolenoid.Value.kForward);
+    	RobotMap.airDoubleSolenoid1.set(DoubleSolenoid.Value.kReverse);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,7 +31,7 @@ public class SolTest extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	RobotMap.airDoubleSolenoid1.set(DoubleSolenoid.Value.kReverse);
+    	RobotMap.airDoubleSolenoid1.set(DoubleSolenoid.Value.kOff);
     }
 
     // Called when another command which requires one or more of the same

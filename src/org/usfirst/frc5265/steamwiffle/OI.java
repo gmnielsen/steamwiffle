@@ -74,6 +74,7 @@ public class OI {
        
        	solTest = new JoystickButton(steering,4);
        		solTest.toggleWhenPressed(new SolTest());
+       		
         //servoTest = new JoystickButton(steering,3);
         	//servoTest.whenPressed(new servoTest());
         //armup = new JoystickButton(steering,1);
