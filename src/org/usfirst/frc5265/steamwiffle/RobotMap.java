@@ -16,6 +16,7 @@ package org.usfirst.frc5265.steamwiffle;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.NidecBrushless;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -44,6 +45,7 @@ public class RobotMap {
     public static DigitalInput limiterTop;
     public static DigitalInput limiterBottom;
     public static SpeedController brushless;
+    public static NidecBrushless arm;
    
 
     
@@ -78,8 +80,8 @@ public class RobotMap {
         //poot = new AnalogPotentiometer(2);
         //LiveWindow.addSensor("chassis", "analpooot", (AnalogPotentiometer) poot);
         
-        servme = new Servo(9);
-        LiveWindow.addActuator("Servo", 9, (Servo) servme);
+        //servme = new Servo(9);
+        //LiveWindow.addActuator("Servo", 9, (Servo) servme);
         
         limiterTop = new DigitalInput(5);
         LiveWindow.addActuator("limiterUP",5 , (DigitalInput) limiterTop);
@@ -111,8 +113,8 @@ public class RobotMap {
         armMotor = new Victor(5);
         LiveWindow.addActuator("arm", "arm motor", (Victor) armMotor);
         
-       
-        
+        arm = new NidecBrushless(9,9);
+        arm.enable();
         
         airDoubleSolenoid1.set(DoubleSolenoid.Value.kOff);
         

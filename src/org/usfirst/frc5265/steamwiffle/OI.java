@@ -55,10 +55,10 @@ public class OI {
     public Joystick steering;
     
     public JoystickButton brush;
-    public JoystickButton armup;
-    public JoystickButton armdown;
+    public JoystickButton arm;
     public JoystickButton servoTest;
-    public JoystickButton solTest;
+    public JoystickButton grabbyOpen;
+    public JoystickButton grabbyClose;
     public JoystickButton liftup;
     public JoystickButton liftdown;
 
@@ -69,22 +69,18 @@ public class OI {
     	steering = new Joystick(0);
        
         // construct each button and what happens when it is used
-        //click01 = new JoystickButton(steering, 1);
-        	//click01.whileHeld(new dothis01());
+      
        
-       	solTest = new JoystickButton(steering,4);
-       		solTest.toggleWhenPressed(new SolTest());
-       		
-        //servoTest = new JoystickButton(steering,3);
-        	//servoTest.whenPressed(new servoTest());
-        //armup = new JoystickButton(steering,1);
-        	//armup.whenPressed(new armUp());
-        armdown = new JoystickButton(steering,2);
-        	armdown.whenPressed(new armDown());
+       	grabbyOpen = new JoystickButton(steering,2);
+       		grabbyOpen.whenPressed(new grab(true));
+       	grabbyClose = new JoystickButton(steering,3);
+       		grabbyClose.whenPressed(new grab(false));
+        arm = new JoystickButton(steering,1);
+        	arm.whenPressed(new arm());
         liftup = new JoystickButton(steering, 5);
-        	liftup.whileHeld(new LiftUp());
+        	liftup.whileHeld(new lift(true));
         liftdown = new JoystickButton(steering, 6);
-        	liftdown.whileHeld(new LiftDown());
+        	liftdown.whileHeld(new lift(false));
         			
        
         
