@@ -16,30 +16,38 @@ public class arm extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    }
+    	if(RobotMap.pot.get() >.1 ){
+        	while(RobotMap.pot.get() >.1 ){
+            	
+            	
+            	RobotMap.arm.set(.25);
+        	}
+    	}else{
+        	
+        	
+        	while(RobotMap.pot.get() <.1 ){
+        		
+        			
+        			RobotMap.arm.set(-.25);
+        	}
+    	}
+        	
+        }
+    
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(RobotMap.pot.get() <.4 && RobotMap.pot.get() >.1 ){
-        	
-        	
-        	RobotMap.arm.set(1);
-        	end();
-    	}else if (RobotMap.pot.get() >.1 ){
-    		
-    			
-    			RobotMap.arm.set(-1);
-    			end();
-    	}
-    }
+    }    	
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+		RobotMap.arm.set(0);
+
     }
 
     // Called when another command which requires one or more of the same

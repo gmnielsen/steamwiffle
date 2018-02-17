@@ -30,7 +30,10 @@ public class lift extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !RobotMap.limiterBottom.get() || !RobotMap.limiterTop.get();
+    	if(woo){
+    		return !RobotMap.limiterTop.get();
+    	}else return !RobotMap.limiterBottom.get();
+        
     }
 
     // Called once after isFinished returns true
