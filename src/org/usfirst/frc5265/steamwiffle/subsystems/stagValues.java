@@ -44,12 +44,12 @@ public class stagValues extends Subsystem {
 	public static final double allUpT = 0.0, allUpP = 0.0, halfUpT = 0.0, halfUpP = 0.0;
 	
 	//Lift power
-	public static final double Liftpower = .5;
+	public static final double Liftpower = .3;
 	
 	//Arm power and pot limits
 	public static final double upperLimit = .7;
-	public static final double lowerLimit = .7;
-	public static final double armPower = .5;
+	public static final double lowerLimit = .2;
+	public static final double armPower = .3;
 	
 	// limit for making sure arm is out of pot when solenoid fires
 	public static final double potCheck = .2;

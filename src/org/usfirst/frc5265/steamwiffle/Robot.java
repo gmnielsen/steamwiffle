@@ -14,12 +14,9 @@ package org.usfirst.frc5265.steamwiffle;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.DriverStation;
 import org.usfirst.frc5265.steamwiffle.commands.*;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import org.usfirst.frc5265.steamwiffle.subsystems.*;
 
 /**
@@ -35,7 +32,6 @@ public class Robot extends IterativeRobot {
     SendableChooser <Command> autoChooser;
     //public static NetworkTable Raspberry;
     
-    String gameData;
     
     
     /*
@@ -90,13 +86,16 @@ public class Robot extends IterativeRobot {
         //autonomousCommand = new AutonomousCommand();
         autoChooser = new SendableChooser<Command>();
         //autoChooser.addDefault("Default Does Nothing", new AutonomousCommand());
-        autoChooser.addObject("Center Alliance", new autoRun("center"));
-        autoChooser.addObject("Right Alliance", new autoRun("right"));
-        autoChooser.addObject("Left Alliance", new autoRun("left"));
+        autoChooser.addDefault("default", new autoAlly("doNothing"));
+        autoChooser.addObject("Center Alliance", new autoAlly("center"));
+        autoChooser.addObject("Right Alliance", new autoAlly("right"));
+        autoChooser.addObject("Left Alliance", new autoAlly("left"));
+        autoChooser.addObject("Left No Scale Alliance", new autoAlly("leftNoScale"));
+        autoChooser.addObject("Right No Scale Alliance", new autoAlly("rightNoScale"));
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
         
 
-        autonomousCommand = new autoRun("default");
+        autonomousCommand = new autoAlly("center");
         
        
         
@@ -122,15 +121,9 @@ public class Robot extends IterativeRobot {
 
     	autonomousCommand = autoChooser.getSelected();
     	
-    	gameData = DriverStation.getInstance().getGameSpecificMessage();
     	
-    	if(gameData.charAt(0) == 'R'){
-    		//right side
-    		
-    	} else{
-    		//left side
-    		
-    	}
+    	
+    	
 
         if (autonomousCommand != null) autonomousCommand.start();
         }
@@ -206,7 +199,6 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-        LiveWindow.run();
     }
     
     //public void ultrasonicSample() {

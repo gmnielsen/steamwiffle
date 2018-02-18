@@ -1,6 +1,7 @@
 package org.usfirst.frc5265.steamwiffle.commands;
 
 import org.usfirst.frc5265.steamwiffle.RobotMap;
+import org.usfirst.frc5265.steamwiffle.subsystems.stagValues;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -23,9 +24,9 @@ public class lift extends Command {
     protected void execute() {
     if (woo){
     	
-    	RobotMap.brushless.set(.5);
+    	RobotMap.brushless.set(stagValues.Liftpower);
     	
-    }else RobotMap.brushless.set(-.5);
+    }else RobotMap.brushless.set(-stagValues.Liftpower);
     }
 
     // Make this return true when this Command no longer needs to run execute()
