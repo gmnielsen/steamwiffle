@@ -76,7 +76,7 @@ public class OI {
        	grabbyClose = new JoystickButton(steering,3);
        		grabbyClose.whenPressed(new grab(false));
         arm = new JoystickButton(steering,1);
-        	arm.whenActive(new arm());
+        	arm.whenPressed(new arm());
         liftup = new JoystickButton(steering, 5);
         	liftup.whileHeld(new lift(true));
         liftdown = new JoystickButton(steering, 6);

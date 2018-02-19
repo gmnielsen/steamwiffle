@@ -22,6 +22,7 @@ public class lift extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if(!stagValues.tog && RobotMap.pot.get() > stagValues.lowerLimit) end();
     if (woo){
     	
     	RobotMap.brushless.set(stagValues.Liftpower);
@@ -31,7 +32,7 @@ public class lift extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(woo){
+    	if(!woo){
     		return !RobotMap.limiterTop.get();
     	}else return !RobotMap.limiterBottom.get();
         

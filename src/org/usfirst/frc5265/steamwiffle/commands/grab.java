@@ -27,8 +27,12 @@ boolean woo;
     	
     	if(woo){
     		RobotMap.airDoubleSolenoid1.set(DoubleSolenoid.Value.kForward);
+    		stagValues.tog = true;
     		
-    	}else RobotMap.airDoubleSolenoid1.set(DoubleSolenoid.Value.kReverse);
+    	}else{
+    		RobotMap.airDoubleSolenoid1.set(DoubleSolenoid.Value.kReverse);
+    		stagValues.tog = false;
+    	}
     	}
     }
     // Make this return true when this Command no longer needs to run execute()

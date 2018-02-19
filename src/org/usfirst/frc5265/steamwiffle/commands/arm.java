@@ -17,19 +17,19 @@ public class arm extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if(RobotMap.pot.get() > stagValues.lowerLimit ){
-        	while(RobotMap.pot.get() > stagValues.lowerLimit ){
+    	if(RobotMap.pot.get() < stagValues.lowerLimit ){
+        	while(RobotMap.pot.get() < stagValues.lowerLimit ){
             	
             	
-            	RobotMap.arm.set(stagValues.armPower);
+            	RobotMap.planB.set(stagValues.armPower);
         	}
     	}else{
         	
-        	
-        	while(RobotMap.pot.get() < stagValues.upperLimit ){
+        
+        	while(RobotMap.pot.get() > stagValues.lowerLimit ){
         		
         			
-        			RobotMap.arm.set(-stagValues.armPower);
+        			RobotMap.planB.set(-stagValues.armPower);
         	}
     	}
         	

@@ -40,6 +40,7 @@ public class RobotMap {
     public static DigitalInput limiterTop;
     public static DigitalInput limiterBottom;
     public static SpeedController brushless;
+    public static SpeedController planB;
     public static NidecBrushless arm;
     public static DoubleSolenoid airDoubleSolenoid1 = new DoubleSolenoid(0,1);
     	
@@ -68,9 +69,11 @@ public class RobotMap {
         limiterBottom = new DigitalInput(1);
      
         brushless = new Victor (4);
+        planB = new Victor(5);
         
         arm = new NidecBrushless(9,9);
         arm.enable();
+        arm.set(.25);
         
         airDoubleSolenoid1.set(DoubleSolenoid.Value.kOff);
         
