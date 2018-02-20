@@ -19,30 +19,33 @@ boolean woo;
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    }
+    	if(RobotMap.pot.get() < stagValues.potCheck){
+        	
+        	if(woo){
+        		RobotMap.airDoubleSolenoid1.set(DoubleSolenoid.Value.kForward);
+        		stagValues.tog = false;
+        		
+        	}else{
+        		RobotMap.airDoubleSolenoid1.set(DoubleSolenoid.Value.kReverse);
+        		stagValues.tog = true;
+        		}
+        	}
+        }
+    
+    
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(RobotMap.pot.get() > stagValues.potCheck){
-    	
-    	if(woo){
-    		RobotMap.airDoubleSolenoid1.set(DoubleSolenoid.Value.kForward);
-    		stagValues.tog = true;
-    		
-    	}else{
-    		RobotMap.airDoubleSolenoid1.set(DoubleSolenoid.Value.kReverse);
-    		stagValues.tog = false;
-    	}
-    	}
     }
+    	
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	RobotMap.airDoubleSolenoid1.set(DoubleSolenoid.Value.kOff );
+    	
     }
 
     // Called when another command which requires one or more of the same

@@ -71,10 +71,7 @@ public class RobotMap {
         brushless = new Victor (4);
         planB = new Victor(5);
         
-        arm = new NidecBrushless(9,9);
-        arm.enable();
-        arm.set(.25);
-        
+       
         airDoubleSolenoid1.set(DoubleSolenoid.Value.kOff);
         
 

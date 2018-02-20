@@ -17,11 +17,11 @@ public class arm extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if(RobotMap.pot.get() < stagValues.lowerLimit ){
-        	while(RobotMap.pot.get() < stagValues.lowerLimit ){
+    	 if(RobotMap.pot.get() < stagValues.lowerLimit ){
+        	while(RobotMap.pot.get() < stagValues.upperLimit ){
             	
             	
-            	RobotMap.planB.set(stagValues.armPower);
+            	RobotMap.planB.set(-stagValues.armPower);
         	}
     	}else{
         	
@@ -29,7 +29,7 @@ public class arm extends Command {
         	while(RobotMap.pot.get() > stagValues.lowerLimit ){
         		
         			
-        			RobotMap.planB.set(-stagValues.armPower);
+        			RobotMap.planB.set(stagValues.armPower);
         	}
     	}
         	
@@ -47,7 +47,7 @@ public class arm extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-		RobotMap.arm.set(0);
+		RobotMap.planB.set(0);
 
     }
 
