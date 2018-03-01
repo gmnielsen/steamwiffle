@@ -56,7 +56,7 @@ public class OI {
     
     public JoystickButton brush;
     public JoystickButton arm;
-    public JoystickButton servoTest;
+    public JoystickButton max;
     public JoystickButton grabbyOpen;
     public JoystickButton grabbyClose;
     public JoystickButton liftup;
@@ -81,7 +81,9 @@ public class OI {
         	liftup.whileHeld(new lift(true));
         liftdown = new JoystickButton(steering, 6);
         	liftdown.whileHeld(new lift(false));
-        			
+        		
+        max = new JoystickButton(steering,4);
+        	max.whenPressed(new maxHeight());
        
         
 

@@ -8,46 +8,34 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class arm extends Command {
-    public arm() {
+public class maxHeight extends Command {
+
+    public maxHeight() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	 if(RobotMap.pot.get() < stagValues.lowerLimit ){
-        	while(RobotMap.pot.get() < stagValues.upperLimit ){
-            	
-            	
-            	RobotMap.planB.set(-stagValues.armPower);
-        	}
-    	}else{
-        
-        	while(RobotMap.pot.get() > stagValues.lowerLimit ){
-        		
-        			
-        			RobotMap.planB.set(stagValues.armPower);
-        	}
-    	}
-        	
-        }
-    
+    	
+    }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    }    	
+if (RobotMap.pot.get() > .24){
+    		
+    		RobotMap.planB.set(stagValues.armPower);
+    	}else RobotMap.planB.set(-stagValues.armPower);
+    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return (RobotMap.pot.get() > .23 && RobotMap.pot.get() < .25);
     }
 
     // Called once after isFinished returns true
     protected void end() {
-		RobotMap.planB.set(0);
-
+    	RobotMap.planB.set(0);
     }
 
     // Called when another command which requires one or more of the same
